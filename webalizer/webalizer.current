@@ -1,0 +1,440 @@
+# Webalizer V2.20-01 Incremental Data - 08/11/2014 20:52:20
+2014 8 11 20 52 20
+2474 1203 24 98 14 12 69813956 65 33 0
+2 2 1300 5 11
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+1344 280 14893884 2 13 3
+43 0 0 1 1 1
+136 133 9806678 4 4 4
+476 386 24382346 19 14 11
+178 165 7407098 3 7 2
+214 197 10867475 4 18 8
+83 42 2456475 2 8 4
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+9 0 653 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+81 78 5174655 2
+333 298 16002369 15
+37 35 1956705 3
+0 0 0 0
+99 99 5806592 2
+33 33 1836520 1
+92 44 2910649 6
+172 115 7214608 7
+42 41 2430049 4
+123 115 4939765 8
+153 106 7257017 8
+1300 239 14284374 9
+0 0 0 0
+0
+0
+0
+1203
+0
+0
+0
+0
+0
+33
+0
+1
+0
+0
+114
+0
+0
+0
+0
+0
+0
+1122
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+1
+0
+0
+# -urls- 
+/demo1/media/system/js/mootools-more.js
+0 1 0 238128 0 0
+/js/bootstrap-datetimepicker.js
+0 37 0 1895194 0 0
+/
+0 44 0 1532520 32 17
+/demo1/
+0 1 0 16391 0 1
+/demo1/templates/beez_20/css/layout.css
+0 1 0 29498 0 0
+/acuerdo.html
+0 4 0 144792 0 2
+/demos/slider_01.png
+0 6 0 2251212 0 0
+/demo1/media/system/js/caption.js
+0 1 0 800 0 0
+/demo1/templates/beez_20/css/general.css
+0 1 0 4143 0 0
+/images/ixcp.css
+0 1 0 6200 0 0
+/images/ico_03_01.png
+0 11 0 28850 0 0
+/images/bg.png
+0 11 0 305140 0 0
+/demo1/templates/system/css/system.css
+0 1 0 859 0 0
+/rs-plugin/assets/large_right.png
+0 2 0 3122 0 0
+/demo1/templates/beez_20/css/print.css
+0 1 0 5242 0 0
+/demo/templates/system/css/offline.css
+0 1 0 1404 0 0
+/images/flogo.png
+0 39 0 590506 0 0
+/js/custom.js
+0 35 0 77280 0 0
+/demo1/templates/beez_20/css/personal.css
+0 1 0 20948 0 0
+/css/owl-carousel.css
+0 36 0 169224 0 0
+/images/loading.gif
+0 32 0 446078 0 0
+/demo/templates/system/css/general.css
+0 1 0 2793 0 0
+/rs-plugin/js/jquery.themepunch.revolution.min.js
+0 36 0 3342504 0 0
+/demo1/templates/beez_20/images/personal/footer.jpg
+0 1 0 547 0 0
+/demo1/templates/beez_20/images/personal/bg2.png
+0 1 0 2629 0 0
+/demo1/templates/beez_20/fonts/TitilliumMaps29L002.otf
+0 1 0 47984 0 0
+/images/bg_ipad.png
+0 1 0 8889 0 0
+/fonts/fontawesome-webfont862f.woff
+0 23 0 1758960 0 0
+/rs-plugin/assets/bullet.png
+0 2 0 4508 0 0
+/demo1/templates/beez_20/images/header-bg.gif
+0 1 0 881 0 0
+/demo1/images/banners/white.png
+0 1 0 6416 0 0
+/rs-plugin/assets/loader.gif
+0 29 0 66170 0 0
+/images/slider_icon.png
+0 33 0 43320 0 0
+/js/jquery.flexslider.js
+0 5 0 198815 0 0
+/demo/images/joomla_logo_black.jpg
+0 1 0 21171 0 0
+/demo1/templates/beez_20/images/personal/personal2.png
+0 1 0 19615 0 0
+/css/font-awesome.css
+0 36 0 832161 0 0
+/condiciones.html
+0 3 0 34697 0 0
+/images/bg_header.png
+0 1 0 1056 0 0
+/images/flexslider_shadow.png
+0 5 0 27845 0 0
+/demo1/media/system/css/system.css
+0 1 0 1592 0 0
+/css/bootstrap.css
+0 36 0 4377384 0 0
+/js/retina-1.1.0.js
+0 35 0 127840 0 0
+/images/icon_money.png
+0 1 0 14361 0 0
+/demo1/media/system/js/core.js
+0 1 0 4225 0 0
+/demos/gallery_06.png
+0 8 0 1391320 0 0
+/rs-plugin/js/jquery.themepunch.plugins.min.js
+0 37 0 2896290 0 0
+/demo1/templates/beez_20/images/nature/karo.gif
+0 1 0 45 0 0
+/rs-plugin/assets/timer.png
+0 29 0 3250 0 0
+/images/ico_02_01.png
+0 11 0 28920 0 0
+/demos/slider_woman_01.png
+0 31 0 7552227 0 0
+/demos/gallery_05.png
+0 8 0 1578675 0 0
+/images/shadow.png
+0 32 0 498655 0 0
+/demo1/templates/beez_20/images/nature/arrow1.gif
+0 1 0 1700 0 0
+/demo1/templates/beez_20/images/content_bg.gif
+0 1 0 165 0 0
+/css/flexslider.css
+0 6 0 24126 0 0
+/demo1/templates/beez_20/javascript/md_stylechanger.js
+0 1 0 2104 0 0
+/rs-plugin/assets/large_left.png
+0 2 0 3034 0 0
+/demos/gallery_04.png
+0 8 0 1737806 0 0
+/acerca.html
+0 6 0 144453 0 1
+/demos/sliderbg_04.jpg
+0 25 0 1816923 0 0
+/images/icon_sidemenu.png
+0 1 0 8688 0 0
+/images/map_bg.png
+0 32 0 2968875 0 0
+/images/img_btn_ipad.png
+0 1 0 2321 0 0
+/demo1/images/joomla_black.gif
+0 1 0 2371 0 0
+/style.css
+0 34 0 1955648 0 0
+/demos/gallery_03.png
+0 8 0 1738030 0 0
+/images/logo.png
+0 39 0 267480 0 0
+/js/bootstrap.min.js
+0 37 0 991610 0 0
+/images/breadcrumb.png
+0 9 0 9336 0 0
+/js/owl.carousel.min.js
+0 36 0 798930 0 0
+/demos/gallery_02.png
+0 8 0 1055439 0 0
+/demos/sliderbg_02.jpg
+0 10 0 1150542 0 0
+/rs-plugin/css/settings.css
+0 37 0 1707888 0 0
+/demo1/templates/beez_20/images/personal/ecke.gif
+0 1 0 826 0 0
+/images/icon_server.png
+0 1 0 13684 0 0
+/images/topbg.png
+0 9 0 104992 0 0
+/demo1/templates/beez_20/images/personal/navi_active.png
+0 1 0 95 0 0
+/demos/gallery_01.png
+0 8 0 1550003 0 0
+/demos/sliderbg_01.jpg
+0 33 0 2133148 0 0
+/images/arrow.png
+0 32 0 29232 0 0
+/demo1/templates/beez_20/javascript/hide.js
+0 1 0 7735 0 0
+/politicas.html
+0 3 0 75360 1 1
+/demo1/templates/beez_20/favicon.ico
+0 1 0 1150 0 0
+/demos/footer_img_03.png
+0 35 0 627810 0 0
+/demo1/templates/beez_20/images/personal/tabs_back.png
+0 1 0 4828 0 0
+/images/menu_dot.png
+0 31 0 28140 0 0
+/js/menu.js
+0 35 0 131136 0 0
+/images/ico_01_01.png
+0 11 0 25090 0 0
+/images/hr.png
+0 1 0 203 0 0
+/demos/footer_img_02.png
+0 35 0 603780 0 0
+/demos/slider_man_01.png
+0 30 0 10724250 0 0
+/js/jquery.js
+0 36 0 3180573 0 0
+/rs-plugin/font/revicons90c6.woff
+0 24 0 158256 0 0
+/images/logo_ix.png
+0 1 0 6980 0 0
+/demos/footer_img_01.png
+0 35 0 548880 0 0
+/demo1/media/system/js/mootools-core.js
+0 1 0 88540 0 0
+/demo1/templates/beez_20/css/position.css
+0 1 0 5857 0 0
+# End Of Table - urls
+# -sites- (monthly)
+out-ar117.tfbnw.net
+0 4 4 60644 1 1407534946
+/
+c-98-236-178-214.hsd1.pa.comcast.net
+0 43 34 1920933 1 1407524195
+/
+173.252.114.119
+0 1 1 85663 0 0
+-
+186-186-65-55.genericrev.telcel.net.ve
+0 9 0 653 0 0
+-
+190-205-199-241.dyn.dsl.cantv.net
+0 44 33 1919928 1 1407534995
+/
+out-ar112.tfbnw.net
+0 3 3 11888 0 0
+-
+out-ar115.tfbnw.net
+0 2 2 18000 0 0
+-
+google-proxy-66-249-88-19.google.com
+0 4 2 71724 2 1407696814
+/
+google-proxy-66-249-93-23.google.com
+0 44 44 3252506 1 1407443267
+/
+69.171.248.1
+0 2 2 321441 0 0
+-
+69.171.248.2
+0 2 2 39853 0 0
+-
+69.171.248.4
+0 2 2 82971 0 0
+-
+69.171.248.5
+0 3 3 599576 0 0
+-
+69.171.248.7
+0 2 2 19140 0 0
+-
+190-203-82-54.dyn.dsl.cantv.net
+0 1590 521 26021945 6 1407588172
+/acuerdo.html
+out-ar113.tfbnw.net
+0 1 1 75541 0 0
+-
+186.167.243.124
+0 42 34 1920275 1 1407693016
+/
+out-ar116.tfbnw.net
+0 2 2 18000 0 0
+-
+out-ar119.tfbnw.net
+0 4 4 34430 0 0
+-
+186.90.148.10
+0 341 291 18317779 9 1407785613
+/
+google-proxy-66-249-83-113.google.com
+0 4 2 83721 2 1407524087
+/
+host-201-218-48-31.telconet.net
+0 127 81 4067776 6 1407790305
+/
+out-ar114.tfbnw.net
+0 6 6 54000 0 0
+-
+201.248.65.42
+0 192 160 10815569 3 1407505559
+-
+# End Of Table - sites (monthly)
+# -sites- (daily)
+186.90.148.10
+0 36 35 1956251 1 1407785613
+/
+host-201-218-48-31.telconet.net
+0 47 7 500224 3 1407790305
+/
+# End Of Table - sites (daily)
+# -referrers- 
+http://desarrollo.interfasedigital.com.ve/condiciones.html
+1 7
+http://desarrollo.interfasedigital.com.ve/acerca.html
+1 75
+- (Direct Request)
+0 86
+http://desarrollo.interfasedigital.com.ve/
+1 2030
+http://www.google.com/search
+0 1
+http://www.desarrollo.interfasedigital.com.ve/
+1 11
+http://desarrollo.interfasedigital.com.ve/demo/
+1 3
+http://desarrollo.interfasedigital.com.ve/demo1/
+1 26
+http://desarrollo.interfasedigital.com.ve/style.css
+1 80
+http://desarrollo.interfasedigital.com.ve/rs-plugin/css/settings.css
+1 34
+http://desarrollo.interfasedigital.com.ve/acuerdo.html
+1 43
+http://desarrollo.interfasedigital.com.ve/css/font-awesome.css
+1 11
+http://desarrollo.interfasedigital.com.ve/index.html
+1 63
+http://desarrollo.interfasedigital.com.ve/politicas.html
+1 4
+# End Of Table - referrers
+# -agents- 
+Mozilla/5.0 (Linux; Android 4.3; GT-I9300 Build/JSS15J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.131 Mobile Sa
+0 53
+Mozilla/5.0 (Windows NT 6.1; rv:6.0) Gecko/20110814 Firefox/6.0 Google favicon
+0 8
+visionutils/0.2
+0 1
+Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Version/7.0 Mobile/11D257 Sa
+0 42
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.77.4 (KHTML, like Gecko) Version/7.0.5 Safari/537.77.4
+0 43
+facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)
+0 33
+Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
+0 385
+Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
+0 114
+Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0
+0 78
+Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko; Google Web Preview) Chrome/27.0.1453 Safari/537.36
+0 44
+Mozilla/5.0 (Windows NT 6.3; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0
+0 1546
+Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
+0 127
+# End Of Table - agents
+# -search strings- 
+# End Of Table - search strings
+# -usernames- 
+# End Of Table - usernames
