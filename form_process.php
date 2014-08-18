@@ -1,6 +1,6 @@
 <?php
 @session_start();
-
+require_once('config.php');
 require_once("lib/clases/plantilla.class.php");
 //require_once("lib/PHPMailer/class.phpmailer.php");
 require_once("lib/clases/usuario.class.php");
@@ -8,12 +8,11 @@ require_once("lib/clases/usuario.class.php");
 //require_once("lib/clases/menu.class.php");
 //require_once("lib/clases/permiso.class.php");
 require_once("lib/funciones.php");
-require_once('config.php');
+
 //error_reporting(0);
 
 function login($usuario,$clave)
 {
-    die("Asd");
     $user = new usuario;
 	
 	if(!$user->login($usuario,$clave))
@@ -25,14 +24,14 @@ function login($usuario,$clave)
 	}
 	else
 	{
-		$menu = new menu;
+		/*$menu = new menu;
 		$menu->iniciar($user->id_grupo);
 		$permiso = new permiso;
-		$permiso->cargar_permisos($user->id_grupo);
+		$permiso->cargar_permisos($user->id_grupo);*/
 		if($user->datos_actualizados)
 		{
-			if($user->id_grupo != GRUPO_ESTUDIANTE)
-				return 'admin/';
+			if($user->id_grupo == AFILIADO)
+				return 'afiliado/';
 			else
 				return 'curso/';
 		}else{
@@ -50,8 +49,7 @@ if(isset($_POST)&&count($_POST)){
 		$$i = escapar($valor);
 	
 	switch($_POST['form']){
-		case 'login':
-                    die("Asd");
+		case 'login':                   
 			if(!$ty_redirect_to = login($usuario,$clave))
 				$form_error = true;
 				

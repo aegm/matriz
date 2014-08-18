@@ -383,16 +383,16 @@ class usuario
 		$clave=md5($clave);
 		$this->db = new db;
 		
-		$usuarios=$this->db->query("SELECT * FROM vusuarios WHERE usuario='$user' AND clave='$clave' AND estatus = '1'");
+		$usuarios=$this->db->query("SELECT * FROM v_usuarios WHERE usuario='$user' AND clave='$clave' AND estatus = '1'");
 		if($usuario=$usuarios->fetch_assoc())
 		{	
-			if($usuario['id_grupo']==GRUPO_ESTUDIANTE)
+			if($usuario['id_grupo']==AFILIADO)
 			{
 				if($usuario['estatus']=='1')
 				{
 					
 					$contrato= new contrato;
-					$contrato->contrato_afiliado($usuario['identificacion']);
+					$contrato->contrato_afiliado($usuario['id_persona']);
 					if($contrato->datos['estatus']=='0')
 					{
 						$this->inactivar($usuario['id_persona'],'2');//aqui esta funcion debe inactivar al usuario en la tabla usuario
@@ -402,30 +402,12 @@ class usuario
 						$this->json=json_encode($this);
 						return $this->estatus;
 					}
-					
-					if($contrato->vencido($usuario['identificacion'],$usuario['id_cod_libro'], $usuario['id_persona']))
-					{
-					//	$this->inactivar($usuario['id_persona'],'3');//aqui esta funcion debe inactivar al usuario en la tabla usuario
-						$this->mensaje=$contrato->mensaje;
-						$this->msgTipo=$contrato->msgTipo;
-						$this->estatus = false;
-						$this->json=json_encode($this);
-						return $this->estatus;
-					}
 				}
 				
 			}
-			if($usuario['estatus']=='2')
+			if($usuario['estatus']=='0')
 			{
 				$this->mensaje="Su usuario ha sido inactivado. Para activar su Cuenta de Usuario debe comunicarse con nosotros por medio de la seccion de Contáctenos";
-				$this->msgTipo="aviso";
-				$this->estatus = false;
-				$this->json=json_encode($this);
-				return $this->estatus;
-			}
-			if($usuario['estatus']=='3')
-			{
-				$this->mensaje="Su contrato ha vencido, por lo tanto ha sido inactivado. Para renovar su Contrato debe comunicarse con nosotros por medio de la seccion de Contáctenos";
 				$this->msgTipo="aviso";
 				$this->estatus = false;
 				$this->json=json_encode($this);
@@ -442,9 +424,8 @@ class usuario
 			$this->nombre=$_SESSION[SISTEMA]['nombre']=$usuario['nombre'];
 			$this->apellido=$_SESSION[SISTEMA]['apellido']=$usuario['apellido'];
 			$this->ultima=$_SESSION[SISTEMA]['ultima_entrada']=date("d/m/Y - g:i:s a",$usuario['ultima_entrada']);
-			$this->grado=$_SESSION[SISTEMA]['grado']=$usuario['grado'];
 			$this->datos_actualizados=$_SESSION[SISTEMA]['datos_actualizados']=$usuario['datos_actualizados'];
-			$this->leccion_actual=$_SESSION[SISTEMA]['leccion_actual']=$usuario['leccion_actual'];
+			$this->leccion_actual=$_SESSION[SISTEMA]['leccion_actual']=$usuario['nivel_actual'];
 			
 			$this->session=$_SESSION[SISTEMA]['session'] = true;
 			$fecha=strtotime("now");

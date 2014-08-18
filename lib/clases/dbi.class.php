@@ -3,8 +3,8 @@
 // NOMBRE: dbi.class.php
 // DESCRIPCION: Manejador de base de datos.
 //----------------------------------------------------------
-// AUTOR: Gilberto López A.
-// CORREO: gilberto.amb@gmail.com
+// AUTOR: Angel Gonzalez
+// CORREO: angeledugo@gmail.com
 // FECHA: 26/09/2011 -=- Versión 1.0
 //----------------------------------------------------------
 
