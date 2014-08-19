@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50527
+Source Server Version : 50523
 Source Host           : localhost:3306
 Source Database       : matriz
 
 Target Server Type    : MYSQL
-Target Server Version : 50527
+Target Server Version : 50523
 File Encoding         : 65001
 
-Date: 2014-08-18 16:05:22
+Date: 2014-08-18 20:53:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -89,12 +89,14 @@ CREATE TABLE `menu` (
   UNIQUE KEY `orden` (`orden`,`tipo`) USING BTREE,
   KEY `fk_menu_acceso` (`id_acceso`) USING BTREE,
   CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`id_acceso`) REFERENCES `usuarios_accesos` (`id_acceso`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
-INSERT INTO `menu` VALUES ('1', '1', 'menu_afiliar', 'dropdown', 'Afiliar', 'afiliar.php', '', '1', '0', '1');
+INSERT INTO `menu` VALUES ('1', '1', 'menu_afiliar', 'dropdown', 'Afiliar', '#', '', '1', '0', '1');
+INSERT INTO `menu` VALUES ('2', '2', 'menu_afiliacion', ' ', 'Afiliacion', 'afiliado/afiliar.php', ' ', '1', '1', '1');
+INSERT INTO `menu` VALUES ('3', '3', 'menu_afiliados', '', 'Afiliados', 'afiliado/afiliados.php', '', '2', '1', '1');
 
 -- ----------------------------
 -- Table structure for pais
@@ -164,7 +166,7 @@ CREATE TABLE `usuarios` (
 -- ----------------------------
 -- Records of usuarios
 -- ----------------------------
-INSERT INTO `usuarios` VALUES ('1', '1', 'angeledugo@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '1408336200', '1408372542', '1');
+INSERT INTO `usuarios` VALUES ('1', '1', 'angeledugo@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '1408336200', '1408411145', '1');
 
 -- ----------------------------
 -- Table structure for usuarios_accesos
@@ -176,12 +178,14 @@ CREATE TABLE `usuarios_accesos` (
   `seguridad` int(4) NOT NULL,
   PRIMARY KEY (`id_acceso`),
   UNIQUE KEY `in_nombre` (`nombre`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of usuarios_accesos
 -- ----------------------------
 INSERT INTO `usuarios_accesos` VALUES ('1', 'afiliar', '2211');
+INSERT INTO `usuarios_accesos` VALUES ('2', 'afiliacion', '2211');
+INSERT INTO `usuarios_accesos` VALUES ('3', 'afiliados', '2211');
 
 -- ----------------------------
 -- Table structure for usuarios_config
@@ -233,6 +237,8 @@ CREATE TABLE `usuarios_grupos_permisos` (
 -- Records of usuarios_grupos_permisos
 -- ----------------------------
 INSERT INTO `usuarios_grupos_permisos` VALUES ('1', '1', '2211');
+INSERT INTO `usuarios_grupos_permisos` VALUES ('1', '2', '2211');
+INSERT INTO `usuarios_grupos_permisos` VALUES ('1', '3', '2211');
 
 -- ----------------------------
 -- View structure for vmenu
@@ -276,7 +282,7 @@ FROM
 				`usuarios_grupos_permisos`.`id_acceso` = `usuarios_accesos`.`id_acceso`
 			)
 		)
-	) ;
+	) ; ;
 
 -- ----------------------------
 -- View structure for v_usuarios

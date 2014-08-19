@@ -5,7 +5,7 @@ require_once("lib/clases/plantilla.class.php");
 //require_once("lib/PHPMailer/class.phpmailer.php");
 require_once("lib/clases/usuario.class.php");
 //require_once("lib/clases/persona.class.php");
-//require_once("lib/clases/menu.class.php");
+require_once("lib/clases/menu.class.php");
 //require_once("lib/clases/permiso.class.php");
 require_once("lib/funciones.php");
 
@@ -24,10 +24,10 @@ function login($usuario,$clave)
 	}
 	else
 	{
-		/*$menu = new menu;
+		$menu = new menu;
 		$menu->iniciar($user->id_grupo);
-		$permiso = new permiso;
-		$permiso->cargar_permisos($user->id_grupo);*/
+		//$permiso = new permiso;
+		//$permiso->cargar_permisos($user->id_grupo);
 		if($user->datos_actualizados)
 		{
 			if($user->id_grupo == AFILIADO)

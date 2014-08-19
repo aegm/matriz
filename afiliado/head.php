@@ -1,5 +1,5 @@
 <?php
-
+//print_r($_SESSION);
 ini_set('error_report', E_ALL);
 error_reporting(E_ALL & ~E_NOTICE);
 //error_reporting(0);
@@ -19,35 +19,16 @@ require_once("../lib/clases/menu.class.php");
 
 $html = new plantilla;
 $usuario = new usuario;
-/* $menu = new menu;
-  $permiso = new permiso; */
+$menu = new menu;
+/* $permiso = new permiso; */
 /* * ***************************************** MANTENIMIENTO ********************************************** */
 
 /* if(MANTENIMIENTO)
   mantenimiento(); */
 
 /* * *************************************** PERMISO DE USUARIO ********************************************** */
-/* $activar_permiso = false;
-  if($usuario->session() && $usuario->datos_actualizados && $usuario->id_grupo == GRUPO_ESTUDIANTE)//si el usuario es estudiante y tiene sus datos actualizados
-  header("location: ../curso/");
-
-  if($usuario->session() && !$usuario->datos_actualizados && $usuario->id_grupo == GRUPO_ESTUDIANTE)//si el usuario es estudiante y no tiene sus datos actualizados
-  header("location: ../curso/configuracion.php");
 
 
-  if(basename($_SERVER['PHP_SELF']) != "configuracion.php" && !$usuario->datos_actualizados)//si el usuario no tiene sus datos actualizados
-  {
-  header("location: ../admin/configuracion.php");
-  }
-
-
-  if($activar_permiso)
-  if(basename($_SERVER['PHP_SELF']) != "index.php")
-  {
-  $modulo = basename(str_ireplace("index.php", "", $_SERVER['PHP_SELF']));
-  if(!$permiso->datos[$modulo]['ver'])
-  header("location: index.php");
-  } */
 
 /* * *************************************** SESSION DE USUARIO ******************************************* */
 $matriz['CHAT'] = "";
@@ -62,42 +43,37 @@ if ($usuario->session()) {
 
 /* * *************************************** MENU DE USUARIO ********************************************** */
 $array['submenu_item'] = "";
-
-/* $matriz['MENU']="";
-  if($menu->datos)
-  foreach($menu->datos as $item)
-  {
-  if($item['url'] != "#")
-  $item['url'] =  ROOT_URL.$item['url'];
-  if(isset($item['submenu']))
-  {
-  $a_submenu="";
-  foreach($item['submenu'] as $submenu)
-  {
-  if($submenu['url'] != "#")
-  $submenu['url'] =  ROOT_URL.$submenu['url'];
-  if($permiso->datos[basename($submenu['url'])]['ver'])
-  if($submenu['id_acceso']!='5')
-  $a_submenu .= $html->html("../html/submenu_item.html",$submenu);
-  else
-  $a_submenu .= $html->html("../html/boton_chat_cliente.html");//esto es en caso de tener acceso al chat para clientes
-  }
-  $item['submenu'] = $html->html("../html/submenu.html",array("submenus"=>$a_submenu));
-  $matriz['MENU'] .= $html->html("../html/menu.html",$item);
-  }
-  else
-  {
-  $item['submenu']="";
-  if($permiso->datos[basename($item['url'])]['ver'])
-  $matriz['MENU'] .= $html->html("../html/menu.html",$item);
-  }
-  }
-  $consola['CONSOLA']="";
-  $consola['CONSOLA'].="*******************menu*******************\n\n".print_r($menu->datos,true);
-  $matriz['CONSOLA']=$html->html('html/consola.html',$consola);
+$matriz['MENU'] = "";
+if ($menu->datos)
+    foreach ($menu->datos as $item) {
+        if ($item['url'] != "#")
+            $item['url'] = ROOT_URL . $item['url'];
+        if (isset($item['submenu'])) {
+            $a_submenu = "";
+            foreach ($item['submenu'] as $submenu) {
+                if ($submenu['url'] != "#")
+                    $submenu['url'] = ROOT_URL . $submenu['url'];
+                //if ($permiso->datos[basename($submenu['url'])]['ver'])
+                    if ($submenu['id_acceso'] != '5')
+                        $a_submenu .= $html->html("../html/submenu_item.html", $submenu);
+                    else
+                        $a_submenu .= $html->html("../html/boton_chat_cliente.html"); //esto es en caso de tener acceso al chat para clientes
+            }
+            $item['submenu'] = $html->html("../html/submenu.html", array("submenus" => $a_submenu));
+            $matriz['MENU'] .= $html->html("../html/menu.html", $item);
+        }
+        else {
+            $item['submenu'] = "";
+            //if ($permiso->datos[basename($item['url'])]['ver'])
+                $matriz['MENU'] .= $html->html("../html/menu.html", $item);
+        }
+    }
+/*$consola['CONSOLA'] = "";
+$consola['CONSOLA'].="*******************menu*******************\n\n" . print_r($menu->datos, true);
+$matriz['CONSOLA'] = $html->html('html/consola.html', $consola);*/
 
 
-  /*************************************** VALIDACION DEL BROWSER ****************************************** */
+/* * ************************************* VALIDACION DEL BROWSER ****************************************** */
 
 /* $matriz['BROWSER']="";
   $agent=$_SERVER['HTTP_USER_AGENT'];
