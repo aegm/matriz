@@ -25,7 +25,7 @@ define('DB_USER', 'root');
 
 /** Tu contraseña de MySQL */
 //define('DB_PASS', 'C243473_matr');
-define('DB_PASS', '1234');
+define('DB_PASS', '');
 
 /** Host de MySQL (es muy probable que no necesites cambiarlo) */
 //define('DB_HOST', 'mysql500.ixwebhosting.com'); 
