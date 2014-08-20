@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2014-08-20 12:59:43
+Date: 2014-08-20 15:26:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -165,7 +165,7 @@ CREATE TABLE `usuarios` (
 -- ----------------------------
 -- Records of usuarios
 -- ----------------------------
-INSERT INTO `usuarios` VALUES ('1', '1', 'angeledugo@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '1408336200', '1408555729', '1');
+INSERT INTO `usuarios` VALUES ('1', '1', 'angeledugo@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '1408336200', '1408557398', '1');
 
 -- ----------------------------
 -- Table structure for usuarios_accesos
