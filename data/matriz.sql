@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50523
+Source Server Version : 50527
 Source Host           : localhost:3306
 Source Database       : matriz
 
 Target Server Type    : MYSQL
-Target Server Version : 50523
+Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2014-08-18 20:53:37
+Date: 2014-08-20 12:59:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -94,9 +94,8 @@ CREATE TABLE `menu` (
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
-INSERT INTO `menu` VALUES ('1', '1', 'menu_afiliar', 'dropdown', 'Afiliar', '#', '', '1', '0', '1');
-INSERT INTO `menu` VALUES ('2', '2', 'menu_afiliacion', ' ', 'Afiliacion', 'afiliado/afiliar.php', ' ', '1', '1', '1');
-INSERT INTO `menu` VALUES ('3', '3', 'menu_afiliados', '', 'Afiliados', 'afiliado/afiliados.php', '', '2', '1', '1');
+INSERT INTO `menu` VALUES ('2', '2', 'menu_afiliacion', ' ', 'Afiliacion', 'afiliado/afiliar.php', '', '1', '0', '1');
+INSERT INTO `menu` VALUES ('3', '3', 'menu_afiliados', '', 'Afiliados', 'afiliado/afiliados.php', '', '2', '0', '1');
 
 -- ----------------------------
 -- Table structure for pais
@@ -166,7 +165,7 @@ CREATE TABLE `usuarios` (
 -- ----------------------------
 -- Records of usuarios
 -- ----------------------------
-INSERT INTO `usuarios` VALUES ('1', '1', 'angeledugo@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '1408336200', '1408411145', '1');
+INSERT INTO `usuarios` VALUES ('1', '1', 'angeledugo@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '1408336200', '1408555729', '1');
 
 -- ----------------------------
 -- Table structure for usuarios_accesos

@@ -17,51 +17,14 @@ class persona {
         $this->db = new db;
     }
 
-    //********************************************************
-    public function tiene_cupos($identificacion) {
-        $this->db = new db;
-        $cupos = $this->db->query("SELECT cupo FROM personas WHERE identificacion='$identificacion'");
-        if (!$this->db->errno) {
-            $cupo = $cupos->fetch_assoc();
-            if ($cupo['cupo'] > 0) {
-                $this->mensaje = "Si posee cupos...";
-                $this->msgTipo = "ok";
-                $this->estatus = true;
-                $this->json = json_encode($this);
-                return $this->estatus;
-            } else {
-                $this->mensaje = "No posee cupos...";
-                $this->msgTipo = "aviso";
-                $this->estatus = false;
-                $this->json = json_encode($this);
-                return $this->estatus;
-            }
-        }
-        $this->mensaje = "Disculpe, en este momento no se pudo agregar a la persona, por favor intente en otro momento o contacte a soporte tecnico...";
-        $this->msgTipo = "error";
-        $this->estatus = false;
-        $this->json = json_encode($this);
-        return $this->estatus;
-    }
+    public function listarById($id) {
 
-    //********************************************************
-    public function cupos($identificacion, $operador, $cantidad) {
-        $this->db = new db;
-        $this->db->query("UPDATE personas SET cupo=cupo$operador$cantidad WHERE identificacion = '$identificacion'");
+        if (isset($id))
+            $persona = $this->db->query("SELECT * FROM personas where id_persona = '$id'");
 
-
-        if (!$this->db->errno) {
-            $this->mensaje = "La operacion se ha realizado con exito";
-            $this->msgTipo = "ok";
-            $this->estatus = true;
-            $this->json = json_encode($this);
-            return $this->estatus;
-        }
-        $this->mensaje = "Disculpe, en este momento no se pudo agregar a la persona, por favor intente en otro momento o contacte a soporte tecnico (operacion erronea)...";
-        $this->msgTipo = "error";
-        $this->estatus = false;
-        $this->json = json_encode($this);
-        return $this->estatus;
+        //while ($personas = $persona->fetch_assoc()) {
+            $this->datos = $persona->all();
+        //}
     }
 
     //***********************************************************************************************************

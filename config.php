@@ -13,8 +13,8 @@ define('ROOT_URL', 'http://localhost/matriz/');
 //define('ROOT_URL', 'http://desarrollo.interfasedigital.com.ve/');
 /**activa los tipos de erroes del servidor **/
 
-//ini_set('error_report', E_ALL);
-error_reporting(E_ALL & ~E_NOTICE);  
+ini_set('error_report', E_ALL);
+error_reporting(0);  
 /********************************************** MYSQL BASE DE DATOS ***************************************************/
 /** El nombre de tu base de datos */
 define("DB_NAME", "matriz");
@@ -25,7 +25,7 @@ define('DB_USER', 'root');
 
 /** Tu contraseña de MySQL */
 //define('DB_PASS', 'C243473_matr');
-define('DB_PASS', '');
+define('DB_PASS', '1234');
 
 /** Host de MySQL (es muy probable que no necesites cambiarlo) */
 //define('DB_HOST', 'mysql500.ixwebhosting.com'); 

@@ -7,7 +7,7 @@ require_once('persona.class.php');
 require_once('contrato.class.php');
 
 //require_once('../../../lib/clases/notifica.class.php');
-define("SISTEMA","wc");
+define("SISTEMA","gdc");
 define("STANDBY","15");
 class usuario
 {
