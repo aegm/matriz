@@ -49,49 +49,15 @@ class persona {
     //***********************************************************************************************************
     public function agregar($txt_name, $txt_apellido, $email, $slt_sex, $txt_fecha_nac, $telefono, $slt_pais) {
         
-        if (!$email) {
-            $this->mensaje = "El campo email , es obligatorios...";
-            $this->msgTipo = "aviso";
-            $this->estatus = false;
-            $this->json = json_encode($this);
-            return $this->estatus;
-        }
-        if (!$txt_name) {
-            $this->mensaje = "El campo nombre, es obligatorios...";
-            $this->msgTipo = "aviso";
-            $this->estatus = false;
-            $this->json = json_encode($this);
-            return $this->estatus;
-        }
-        if (!$txt_apellido) {
-            $this->mensaje = "El campo apellido, es obligatorios...";
-            $this->msgTipo = "aviso";
-            $this->estatus = false;
-            $this->json = json_encode($this);
-            return $this->estatus;
-        }
-        if (!$slt_sex) {
-            $this->mensaje = "El campo telefono, es obligatorios...";
-            $this->msgTipo = "aviso";
-            $this->estatus = false;
-            $this->json = json_encode($this);
-            return $this->estatus;
-        }
-        if (!$txt_fecha_nac) {
-            $this->mensaje = "El campo Nivel, es obligatorios...";
-            $this->msgTipo = "aviso";
-            $this->estatus = false;
-            $this->json = json_encode($this);
-            return $this->estatus;
-        }
+        
         //validar que todas las variables requeridas esten llenas
-        $fecha_modificacion = $fecha_creacion = strtotime("now");
-
+        $fecha_nac = strtotime($txt_fecha_nac);
+        $fecha_creacion = strtotime("now");
+       
         die("INSERT INTO personas (nombre,
                                                         apellido,
                                                         correo,
-                                                        fecha_nacimiento,
-                                                        telefono
+                                                        telefono,
                                                         creado,
                                                         modificado,
                                                         fecha_creacion,
@@ -100,11 +66,11 @@ class persona {
                                                         ('$txt_name',
                                                         '$txt_apellido',
                                                         '$email',
-                                                        '$txt_fecha_nac'    
+                                                        '$fecha_nac',   
                                                         '$telefono',
                                                         '$correo',
                                                         '$creado',
-                                                        '$fecha_creacion','$slt_pais',$slt_sex)")or die("asd");
+                                                        '$fecha_creacion','$slt_pais','$slt_sex')")or die("asd");
         if (!$this->db->errno) {
             $this->msgTipo = "ok";
             $this->mensaje = "Se han agregado los datos correctamente...";

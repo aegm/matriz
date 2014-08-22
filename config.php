@@ -10,11 +10,12 @@ define('','6');
 /** cambia el root del apache. **/
 define('ROOT_DIR', dirname(__FILE__) . '/');
 define('ROOT_URL', 'http://localhost/matriz/');
-//define('ROOT_URL', 'http://desarrollo.interfasedigital.com.ve/');
+/*define('ROOT_DIR', dirname(__FILE__) . '/');
+define('ROOT_URL', 'http://desarrollo.interfasedigital.com.ve/');**/
 /**activa los tipos de erroes del servidor **/
 
-ini_set('error_report', E_ALL);
-error_reporting(0);  
+//ini_set('error_report', E_ALL);
+error_reporting(E_ALL & ~E_NOTICE);  
 /********************************************** MYSQL BASE DE DATOS ***************************************************/
 /** El nombre de tu base de datos */
 define("DB_NAME", "matriz");

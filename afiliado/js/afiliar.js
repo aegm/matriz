@@ -4,19 +4,15 @@
  * and open the template in the editor.
  */
 $(document).ready(function() {
-    $('#datetimepicker').datetimepicker({
+    $('.form_datetime').datetimepicker({
         weekStart: 1,
-        language: 'es',
-        pickDate: false, //en/disables the date picker
-        pickTime: false,
-        showToday: true,
-        sideBySide: false,
-        useMinutes: false, //en/disables the minutes picker
-        useSeconds: false, //en/disables the seconds picker
-        useCurrent: false
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1
     });
-    $(function() {
-
-    });
+   
 });
 
