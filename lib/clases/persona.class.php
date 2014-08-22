@@ -23,41 +23,61 @@ class persona {
             $persona = $this->db->query("SELECT * FROM personas where id_persona = '$id'");
 
         //while ($personas = $persona->fetch_assoc()) {
-            $this->datos = $persona->all();
+        $this->datos = $persona->all();
         //}
     }
 
+    public function verificaNewAfiliado($email) {
+
+        if (isset($email))
+            $sql = "select * from personas where correo = '$email'";
+
+        $query = $this->db->query($sql)or die("asd");
+        if ($query->num_rows) {
+            $this->mensaje = "ya se se encuenta afiliada esta persona";
+            $this->msgTipo = "aviso";
+            $this->estatus = false;
+        } else {
+            $this->mensaje = "El correo se encuenta disponible";
+            $this->msgTipo = "ok";
+            $this->estatus = true;
+        }
+
+        return $this->estatus;
+    }
+
     //***********************************************************************************************************
-    public function agregar($identificacion, $id_estado, $id_ciudad, $nombre, $apellido, $telefono, $telefono2, $correo, $correo2, $fecha_nacimiento, $direccion, $creado, $modificado, $id_grupo, $id_pais) {
-        if (!$identificacion) {
-            $this->mensaje = "El campo identificacion, es obligatorios...";
+    public function agregar($txt_name, $txt_apellido, $email, $slt_sex, $txt_fecha_nac, $telefono, $slt_pais) {
+        
+        if (!$email) {
+            $this->mensaje = "El campo email , es obligatorios...";
             $this->msgTipo = "aviso";
             $this->estatus = false;
             $this->json = json_encode($this);
             return $this->estatus;
         }
-        if (!$nombre) {
+        if (!$txt_name) {
             $this->mensaje = "El campo nombre, es obligatorios...";
             $this->msgTipo = "aviso";
             $this->estatus = false;
             $this->json = json_encode($this);
             return $this->estatus;
         }
-        if (!$apellido) {
+        if (!$txt_apellido) {
             $this->mensaje = "El campo apellido, es obligatorios...";
             $this->msgTipo = "aviso";
             $this->estatus = false;
             $this->json = json_encode($this);
             return $this->estatus;
         }
-        if (!$telefono) {
+        if (!$slt_sex) {
             $this->mensaje = "El campo telefono, es obligatorios...";
             $this->msgTipo = "aviso";
             $this->estatus = false;
             $this->json = json_encode($this);
             return $this->estatus;
         }
-        if (!$id_grupo) {
+        if (!$txt_fecha_nac) {
             $this->mensaje = "El campo Nivel, es obligatorios...";
             $this->msgTipo = "aviso";
             $this->estatus = false;
@@ -65,65 +85,26 @@ class persona {
             return $this->estatus;
         }
         //validar que todas las variables requeridas esten llenas
-        $this->db = new db;
         $fecha_modificacion = $fecha_creacion = strtotime("now");
 
-        $campo_completarsql_1 = "";
-        $campo_completarsql_2 = "";
-        if ($fecha_nacimiento) {
-            $campo_completarsql_1.=",fecha_nacimiento";
-            $campo_completarsql_2.=",'$fecha_nacimiento'";
-        }
-        if (!isset($id_pais))
-            $id_pais = '1';
-
-        if ($id_estado) {
-            $campo_completarsql_1.=",id_estado";
-            $campo_completarsql_2.=",'$id_estado'";
-        }
-        if ($id_ciudad) {
-            $campo_completarsql_1.=",id_ciudad";
-            $campo_completarsql_2.=",'$id_ciudad'";
-        }
-        if ($id_grupo == '1') {
-            $cupo = '9999999';
-        } else {
-            $cupo = '';
-        }
-
-        if ($id_grupo == '4')
-            $cupo = '1';
-
-        $this->db->query("INSERT INTO personas
-												(identificacion,
-												nombre,
-												apellido,
-												telefono,
-												telefono2,
-												correo,
-												correo2,
-												direccion,
-												creado,
-												modificado,
-												fecha_creacion,
-												fecha_modificacion,
-												id_grupo,cupo,id_pais 
-												$campo_completarsql_1)
-											VALUES
-												('$identificacion',
-												'$nombre',
-												'$apellido',
-												'$telefono',
-												'$telefono2',
-												'$correo',
-												'$correo2',
-												'$direccion',
-												'$creado',
-												'$modificado',
-												'$fecha_creacion',
-												'$fecha_modificacion',
-												'$id_grupo','$cupo','$id_pais'
-												$campo_completarsql_2)");
+        die("INSERT INTO personas (nombre,
+                                                        apellido,
+                                                        correo,
+                                                        fecha_nacimiento,
+                                                        telefono
+                                                        creado,
+                                                        modificado,
+                                                        fecha_creacion,
+                                                        sexo)
+                                                VALUES
+                                                        ('$txt_name',
+                                                        '$txt_apellido',
+                                                        '$email',
+                                                        '$txt_fecha_nac'    
+                                                        '$telefono',
+                                                        '$correo',
+                                                        '$creado',
+                                                        '$fecha_creacion','$slt_pais',$slt_sex)")or die("asd");
         if (!$this->db->errno) {
             $this->msgTipo = "ok";
             $this->mensaje = "Se han agregado los datos correctamente...";
