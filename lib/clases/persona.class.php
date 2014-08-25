@@ -36,31 +36,33 @@ class persona {
         if ($query->num_rows) {
             $this->mensaje = "ya se se encuenta afiliada esta persona";
             $this->msgTipo = "aviso";
-            $this->estatus = false;
-        } else {
-            $this->mensaje = "El correo se encuenta disponible";
-            $this->msgTipo = "ok";
             $this->estatus = true;
+        } else {
+            $this->mensaje = "El correo se encuenta registrado";
+            $this->msgTipo = "ok";
+            $this->estatus = false;
         }
 
         return $this->estatus;
     }
 
     //***********************************************************************************************************
-    public function agregar($txt_name, $txt_apellido, $email, $slt_sex, $txt_fecha_nac, $telefono, $slt_pais) {
+    public function agregar($txt_name, $txt_apellido, $email, $slt_sex, $txt_fecha_nac, $telefono, $slt_pais,$afiliador) {
         
         
         //validar que todas las variables requeridas esten llenas
         $fecha_nac = strtotime($txt_fecha_nac);
         $fecha_creacion = strtotime("now");
        
-        die("INSERT INTO personas (nombre,
+        $this->db->query("INSERT INTO personas (nombre,
                                                         apellido,
                                                         correo,
+                                                        fecha_nacimiento,
                                                         telefono,
                                                         creado,
                                                         modificado,
                                                         fecha_creacion,
+                                                        id_pais,
                                                         sexo)
                                                 VALUES
                                                         ('$txt_name',
@@ -68,8 +70,8 @@ class persona {
                                                         '$email',
                                                         '$fecha_nac',   
                                                         '$telefono',
-                                                        '$correo',
-                                                        '$creado',
+                                                        '$afiliador',
+                                                        '$afiliador',
                                                         '$fecha_creacion','$slt_pais','$slt_sex')")or die("asd");
         if (!$this->db->errno) {
             $this->msgTipo = "ok";
@@ -84,41 +86,7 @@ class persona {
             $this->estatus = false;
             $this->json = json_encode($this);
             return $this->estatus;
-        } else {
-            $this->mensaje = "Disculpe, en este momento no se pudo agregar a la persona, por favor intente en otro momento o contacte a soporte tecnico.....INSERT INTO personas
-												(identificacion,
-												nombre,
-												apellido,
-												telefono,
-												telefono2,
-												correo,
-												correo2,
-												direccion,
-												creado,
-												modificado,
-												fecha_creacion,
-												fecha_modificacion,
-												id_grupo
-												$campo_completarsql_1)
-											VALUES
-												('$identificacion',
-												'$nombre',
-												'$apellido',
-												'$telefono',
-												'$telefono2',
-												'$correo',
-												'$correo2',
-												'$direccion',
-												'$creado',
-												'$modificado',
-												'$fecha_creacion',
-												'$fecha_modificacion',
-												'$id_grupo'
-												$campo_completarsql_2)";
-            $this->msgTipo = "error";
-            $this->estatus = false;
-            $this->json = json_encode($this);
-            return $this->estatus;
+       
         }
     }
 
@@ -489,25 +457,10 @@ class persona {
     }
 
     //***********************************************************************************************************
-    public function listar($valor = "", $campo = "", $limite = "") {//el id persona puede ser un vector, la identificacion no.
-        $this->db = new db;
-        if (is_array($valor)) {//si id_persona es un vector
-            $cadena = "$campo='$valor[0]'";
-            foreach ($valor as $vector_campo => $vector_valor)//se listan las personas que estan en el vector id_persona
-                if ($vector_campo > 0)
-                    $cadena = " OR $vector_campo='$vector_valor'";
-            $personas = $this->db->query("SELECT * FROM vpersonas WHERE $cadena ORDER BY nombre");
-        }
-        else
-        if (!$valor && !$campo) {//si id_persona e identificacion estan vacios, entonces se listan todas las personas de la tabla
-            if ($limite)
-                $limite = " LIMIT $limite";
-            $personas = $this->db->query("SELECT * FROM vpersonas ORDER BY nombre$limite");
-        } else//sino entonces se busca la persona a por medio del campo id_persona o el campo identificacion
-            $personas = $this->db->query("SELECT * FROM vpersonas WHERE $campo='$valor'");
-
-
-
+    public function listar($estatus,$id_afiliador) {//el id persona puede ser un vector, la identificacion no.
+        
+        $sql = "select * from vpersonas where estatus = '2' and id_afiliador = '$id_afiliador'";
+        $personas = $this->db->query($sql);
 
         if (!$personas->num_rows) {
             $this->json = "";
@@ -520,7 +473,6 @@ class persona {
         $this->datos = "";
 
         while ($persona = $personas->fetch_assoc()) {
-            $persona['fecha_nacimiento'] = fecha($persona['fecha_nacimiento']);
             $this->datos[] = $persona;
         }
 

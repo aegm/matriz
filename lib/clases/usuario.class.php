@@ -468,7 +468,6 @@ class usuario
 		$this->apellido=$_SESSION[SISTEMA]['apellido'];
 		$this->ultima=$_SESSION[SISTEMA]['ultima_entrada'];
 		$this->session=$_SESSION[SISTEMA]['session'];
-		$this->grado=$_SESSION[SISTEMA]['grado'];
 		$this->datos_actualizados=$_SESSION[SISTEMA]['datos_actualizados'];
 		$this->leccion_actual=$_SESSION[SISTEMA]['leccion_actual'];
 		

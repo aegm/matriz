@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50527
+Source Server Version : 50523
 Source Host           : localhost:3306
 Source Database       : matriz
 
 Target Server Type    : MYSQL
-Target Server Version : 50527
+Target Server Version : 50523
 File Encoding         : 65001
 
-Date: 2014-08-22 11:42:33
+Date: 2014-08-25 06:05:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -40,17 +40,17 @@ CREATE TABLE `contratos` (
   `fecha_creacion` int(10) NOT NULL,
   `fecha_modificacion` int(10) NOT NULL,
   `id_afiliador` varchar(50) NOT NULL,
-  `estatus` varchar(1) NOT NULL DEFAULT '1' COMMENT '1-activo, 2-inactivo,3-vencido,0-anulado',
-  `modificado_identificacion` varchar(50) NOT NULL,
-  `modificado_nombre` varchar(100) NOT NULL,
+  `estatus` varchar(1) NOT NULL DEFAULT '2' COMMENT '1-activo, 2-inactivo,3-vencido,0-anulado',
+  `id_plan` int(10) DEFAULT NULL,
   `id_persona` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_contrato`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of contratos
 -- ----------------------------
-INSERT INTO `contratos` VALUES ('1', '1408336200', '1408336200', '1', '1', '1408336200', 'Angel Gonzalez', '1');
+INSERT INTO `contratos` VALUES ('1', '1408336200', '1408336200', '1', '1', '1', '1');
+INSERT INTO `contratos` VALUES ('62', '1408825066', '1408825066', '1', '2', '1', '61');
 
 -- ----------------------------
 -- Table structure for estado
@@ -366,24 +366,25 @@ CREATE TABLE `personas` (
   `sexo` varchar(5) NOT NULL,
   `telefono` varchar(20) NOT NULL,
   `id_ciudad` int(10) unsigned DEFAULT NULL,
-  `identificacion` varchar(50) NOT NULL,
+  `identificacion` varchar(50) DEFAULT NULL,
   `correo` varchar(100) NOT NULL,
   `creado` varchar(100) NOT NULL,
-  `modificado` varchar(100) NOT NULL,
+  `modificado` varchar(100) DEFAULT NULL,
   `fecha_creacion` int(12) NOT NULL,
-  `fecha_modificacion` int(12) NOT NULL,
+  `fecha_modificacion` int(12) DEFAULT NULL,
   `id_pais` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_persona`),
   UNIQUE KEY `in_identificacion` (`identificacion`) USING BTREE,
   KEY `fk_persona_id_ciudad` (`id_ciudad`) USING BTREE,
   KEY `fk_persona_id_estado` (`id_estado`) USING BTREE,
   KEY `pais_persona` (`id_pais`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of personas
 -- ----------------------------
-INSERT INTO `personas` VALUES ('1', '1', 'Angel', 'Gonzalez', null, '', '12345', '2', '16595338', 'angeledugo@gmail.com', '16595338', '16595338', '1408336200', '1408336200', '3');
+INSERT INTO `personas` VALUES ('1', '1', 'Pedro', 'Ramos', null, '', '12345', '2', '16595338', 'angeledugo@gmail.com', '16595338', '16595338', '1408336200', '1408336200', '3');
+INSERT INTO `personas` VALUES ('61', null, 'Angel', 'Gonzalez', '1692041896', 'm', '241-8315703', null, null, 'aegm@gmail.com', '1', '1', '1408825066', null, '17');
 
 -- ----------------------------
 -- Table structure for plan
@@ -437,7 +438,7 @@ CREATE TABLE `usuarios` (
 -- ----------------------------
 -- Records of usuarios
 -- ----------------------------
-INSERT INTO `usuarios` VALUES ('1', '1', 'kmfponce@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '1408336200', '1408714456', '1');
+INSERT INTO `usuarios` VALUES ('1', '1', 'kmfponce@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '1408336200', '1408904817', '1');
 
 -- ----------------------------
 -- Table structure for usuarios_accesos
@@ -554,6 +555,29 @@ FROM
 			)
 		)
 	) ; ;
+
+-- ----------------------------
+-- View structure for vpersonas
+-- ----------------------------
+DROP VIEW IF EXISTS `vpersonas`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `vpersonas` AS (
+	SELECT
+		p.id_persona,
+		p.nombre,
+		p.apellido,
+		FROM_UNIXTIME(c.fecha_creacion) AS fecha_crea,
+		p.correo,
+		c.estatus,
+	c.id_afiliador
+	FROM
+		personas p,
+		contratos c
+	WHERE
+		p.id_persona = c.id_persona and TIMESTAMPDIFF(
+			HOUR,
+			FROM_UNIXTIME(c.fecha_creacion),
+			NOW()
+		) < 48 ) ;
 
 -- ----------------------------
 -- View structure for v_usuarios

@@ -132,7 +132,7 @@ if (isset($_SESSION['mensaje'])) {
         $i['icon'] = "ui-icon-circle-check";
     if ($_SESSION['msgTipo'] == "info")
         $i['icon'] = "ui-icon-info";
-    $matriz['MENSAJE'] = $html->html('html/i.html', $i) . $_SESSION['mensaje'];
+    $matriz['MENSAJE'] = $_SESSION['mensaje'];
     $matriz['MSGTIPO'] = $_SESSION['msgTipo'];
     $matriz['MSGTITLE'] = $_SESSION['msgTitle'];
     unset($_SESSION['mensaje']);

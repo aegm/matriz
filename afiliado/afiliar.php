@@ -2,7 +2,6 @@
 ini_set('error_report', E_ALL);
 error_reporting(E_ALL & ~E_NOTICE);
 session_start();
-session_start();
 /* * ************************************ LIBRERIAS LOCALES **************************************** */
 require_once '../config.php';
 require_once '../lib/clases/dbi.class.php';

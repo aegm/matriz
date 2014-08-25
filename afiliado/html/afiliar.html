@@ -7,7 +7,7 @@
                     <form role="form" class="row online_form_builder_big" action="form_process.php" method="POST">
                         <div class="col-md-6">
                             <label for="select_department">Tipo de afiliación</label>
-                            <select class="form-control" id="slt_plan" required="required" >
+                            <select name="slt_plan" class="form-control" id="slt_plan" required="required" >
                                 <option value="1">COBRE</option>
                             </select>
                         </div>
@@ -41,8 +41,8 @@
                         <div class="col-md-6">
                             <label for="sex">Sexo</label>
                             <select class="form-control" id="slt_sex" name="slt_sex"  required="required">
-                                <option>Masculino</option>
-                                <option>Femenino</option>
+                                <option value="m">Masculino</option>
+                                <option value="f">Femenino</option>
                             </select>
                         </div>
                         <div class="clearfix"></div>
