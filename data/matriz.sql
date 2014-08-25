@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50523
+Source Server Version : 50527
 Source Host           : localhost:3306
 Source Database       : matriz
 
 Target Server Type    : MYSQL
-Target Server Version : 50523
+Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2014-08-25 06:05:12
+Date: 2014-08-25 16:16:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,6 +32,22 @@ CREATE TABLE `ciudades` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for config_matrix
+-- ----------------------------
+DROP TABLE IF EXISTS `config_matrix`;
+CREATE TABLE `config_matrix` (
+  `id_matrix` int(11) NOT NULL,
+  `valor1` varchar(50) DEFAULT NULL,
+  `valor2` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_matrix`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of config_matrix
+-- ----------------------------
+INSERT INTO `config_matrix` VALUES ('1', '2', '2');
+
+-- ----------------------------
 -- Table structure for contratos
 -- ----------------------------
 DROP TABLE IF EXISTS `contratos`;
@@ -44,7 +60,7 @@ CREATE TABLE `contratos` (
   `id_plan` int(10) DEFAULT NULL,
   `id_persona` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_contrato`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of contratos
@@ -68,6 +84,43 @@ CREATE TABLE `estado` (
 -- ----------------------------
 -- Records of estado
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for linea
+-- ----------------------------
+DROP TABLE IF EXISTS `linea`;
+CREATE TABLE `linea` (
+  `id` int(10) NOT NULL,
+  `id_usuario` int(10) DEFAULT NULL,
+  `tamaño` int(10) DEFAULT NULL,
+  `linea` int(10) DEFAULT NULL,
+  `position` int(10) DEFAULT NULL,
+  `id_matrix` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of linea
+-- ----------------------------
+INSERT INTO `linea` VALUES ('1', '1', '1', '0', '1', '1');
+INSERT INTO `linea` VALUES ('2', '61', '2', '1', '2', '1');
+
+-- ----------------------------
+-- Table structure for matrix
+-- ----------------------------
+DROP TABLE IF EXISTS `matrix`;
+CREATE TABLE `matrix` (
+  `id` int(10) NOT NULL,
+  `id_config_matrix` int(10) DEFAULT NULL,
+  `position` int(10) DEFAULT NULL,
+  `id_usuario` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of matrix
+-- ----------------------------
+INSERT INTO `matrix` VALUES ('1', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for menu
@@ -378,7 +431,7 @@ CREATE TABLE `personas` (
   KEY `fk_persona_id_ciudad` (`id_ciudad`) USING BTREE,
   KEY `fk_persona_id_estado` (`id_estado`) USING BTREE,
   KEY `pais_persona` (`id_pais`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of personas
@@ -438,7 +491,7 @@ CREATE TABLE `usuarios` (
 -- ----------------------------
 -- Records of usuarios
 -- ----------------------------
-INSERT INTO `usuarios` VALUES ('1', '1', 'kmfponce@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '1408336200', '1408904817', '1');
+INSERT INTO `usuarios` VALUES ('1', '1', 'kmfponce@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '1408336200', '1408994424', '1');
 
 -- ----------------------------
 -- Table structure for usuarios_accesos
@@ -560,7 +613,7 @@ FROM
 -- View structure for vpersonas
 -- ----------------------------
 DROP VIEW IF EXISTS `vpersonas`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `vpersonas` AS (
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `vpersonas` AS (
 	SELECT
 		p.id_persona,
 		p.nombre,
@@ -577,7 +630,27 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW
 			HOUR,
 			FROM_UNIXTIME(c.fecha_creacion),
 			NOW()
-		) < 48 ) ;
+		) < 48 and c.estatus = '2' ) ;
+
+-- ----------------------------
+-- View structure for vpersonas_activas
+-- ----------------------------
+DROP VIEW IF EXISTS `vpersonas_activas`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `vpersonas_activas` AS (
+	SELECT
+		p.id_persona,
+		p.nombre,
+		p.apellido,
+		FROM_UNIXTIME(c.fecha_creacion) AS fecha_crea,
+		p.correo,
+		c.estatus,
+	c.id_afiliador
+	FROM
+		personas p,
+		contratos c
+	WHERE
+			c.id_persona = p.id_persona and 
+		 c.estatus = '1') ;
 
 -- ----------------------------
 -- View structure for v_usuarios

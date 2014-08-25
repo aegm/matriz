@@ -24,6 +24,8 @@ if (isset($_REQUEST) && count($_REQUEST)) {
             $user = new usuario;
             $afiliador = $_SESSION['gdc']['id_persona'];
             if ($contrato->afiliar($txt_name, $txt_apellido, $email, $slt_sex, $txt_fecha_nac, $telefono, $slt_pais, $afiliador, $slt_plan)) {
+                //verificamos la matrix de la persona que me trajo como referido y comprobamos a quien se le va a realizar el pago
+                
                 $_SESSION['mensaje'] = $contrato->mensaje;
                 $_SESSION['msgTipo'] = $contrato->msgTipo;
                 $_SESSION['msgTitle'] = $contrato->msgTitle;

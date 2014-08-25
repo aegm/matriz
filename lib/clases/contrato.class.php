@@ -29,17 +29,21 @@ class contrato extends persona {
             }
         }
         //buscamos la persona que se agregado
-        $persona = $this->db->query("SELECT LAST_INSERT_ID() as 'id_persona' FROM personas");
+        $persona = $this->db->query("SELECT LAST_INSERT_ID() as 'id_persona', correo FROM personas");
         $persona = $persona->fetch_assoc();
-        $id_persona = $this->num_contrato($persona['id_persona']);
+        $id_persona = $persona['id_persona'];
+
         $fecha_creacion = strtotime("now");
         $sql = "insert into contratos (fecha_creacion,fecha_modificacion,id_afiliador,id_plan,id_persona) values ('$fecha_creacion','$fecha_creacion','$afiliador','$slt_plan','$id_persona')";
         $this->db->query($sql);
         if (!$this->db->errno) {//si no hay errores
             $this->db->commit();
+            //verificamos los datos de la persona afiliada
+            parent::listarById($id_persona);
             $this->db->query("UNLOCK TABLES"); //desbloqueo ambas tablas
             $this->msgTipo = "ok";
             $this->mensaje = "Se ha afiliado corretamente la informacion fue enviada a su correo";
+
             $this->estatus = true;
             $this->msgTitle = "aviso";
             $this->json = json_encode($this);
@@ -73,9 +77,9 @@ class contrato extends persona {
         if (!$this->db->errno) {//si no hay errores
             //verificamos a quien se le confirma el pago
             parent::listarById($id);
-           
+
             $this->msgTipo = "ok";
-            $this->mensaje = "Se ha confirmado el pago de la persona con el correo ".$this->datos[0]['correo'];
+            $this->mensaje = "Se ha confirmado el pago de la persona con el correo " . $this->datos[0]['correo'];
             $this->estatus = true;
             $this->msgTitle = "aviso";
             $this->json = json_encode($this);
