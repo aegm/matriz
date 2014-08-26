@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50527
+Source Server Version : 50523
 Source Host           : localhost:3306
 Source Database       : matriz
 
 Target Server Type    : MYSQL
-Target Server Version : 50527
+Target Server Version : 50523
 File Encoding         : 65001
 
-Date: 2014-08-25 16:16:13
+Date: 2014-08-26 07:16:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -60,7 +60,7 @@ CREATE TABLE `contratos` (
   `id_plan` int(10) DEFAULT NULL,
   `id_persona` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_contrato`)
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of contratos
@@ -114,13 +114,14 @@ CREATE TABLE `matrix` (
   `id_config_matrix` int(10) DEFAULT NULL,
   `position` int(10) DEFAULT NULL,
   `id_usuario` int(10) DEFAULT NULL,
+  `estatus` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of matrix
 -- ----------------------------
-INSERT INTO `matrix` VALUES ('1', '1', '1', '1');
+INSERT INTO `matrix` VALUES ('1', '1', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for menu
@@ -431,7 +432,7 @@ CREATE TABLE `personas` (
   KEY `fk_persona_id_ciudad` (`id_ciudad`) USING BTREE,
   KEY `fk_persona_id_estado` (`id_estado`) USING BTREE,
   KEY `pais_persona` (`id_pais`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of personas
@@ -613,7 +614,7 @@ FROM
 -- View structure for vpersonas
 -- ----------------------------
 DROP VIEW IF EXISTS `vpersonas`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `vpersonas` AS (
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `vpersonas` AS (
 	SELECT
 		p.id_persona,
 		p.nombre,
@@ -630,13 +631,13 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `vpersonas` AS (
 			HOUR,
 			FROM_UNIXTIME(c.fecha_creacion),
 			NOW()
-		) < 48 and c.estatus = '2' ) ;
+		) < 48 ) ;
 
 -- ----------------------------
 -- View structure for vpersonas_activas
 -- ----------------------------
 DROP VIEW IF EXISTS `vpersonas_activas`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `vpersonas_activas` AS (
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `vpersonas_activas` AS (
 	SELECT
 		p.id_persona,
 		p.nombre,
@@ -651,6 +652,20 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW
 	WHERE
 			c.id_persona = p.id_persona and 
 		 c.estatus = '1') ;
+
+-- ----------------------------
+-- View structure for v_personas
+-- ----------------------------
+DROP VIEW IF EXISTS `v_personas`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `v_personas` AS SELECT
+	*
+FROM
+	vpersonas
+UNION
+	SELECT
+		*
+	FROM
+		vpersonas_activas ;
 
 -- ----------------------------
 -- View structure for v_usuarios
