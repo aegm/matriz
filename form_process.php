@@ -53,7 +53,7 @@ if(isset($_POST)&&count($_POST)){
 			if(!$ty_redirect_to = login($usuario,$clave))
 				$form_error = true;
 				
-			$error_redirect_to = $pagina;
+			//$error_redirect_to = $pagina;
 
 		break;
 		case 'registro-usuario1':

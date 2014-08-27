@@ -315,7 +315,7 @@ class usuario {
         $clave = md5($clave);
         $this->db = new db;
 
-        $usuarios = $this->db->query("SELECT * FROM v_usuarios WHERE usuario='$user' AND clave='$clave' AND estatus = '1'");
+        $usuarios = $this->db->query("SELECT * FROM v_usuarios WHERE usuario='$user' AND clave='$clave' AND estatus in ('1','3')");
         if ($usuario = $usuarios->fetch_assoc()) {
             if ($usuario['id_grupo'] == AFILIADO) {
                 if ($usuario['estatus'] == '1') {
