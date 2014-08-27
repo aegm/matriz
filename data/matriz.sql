@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50523
 File Encoding         : 65001
 
-Date: 2014-08-26 07:16:17
+Date: 2014-08-26 19:54:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -54,19 +54,17 @@ DROP TABLE IF EXISTS `contratos`;
 CREATE TABLE `contratos` (
   `id_contrato` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `fecha_creacion` int(10) NOT NULL,
-  `fecha_modificacion` int(10) NOT NULL,
   `id_afiliador` varchar(50) NOT NULL,
-  `estatus` varchar(1) NOT NULL DEFAULT '2' COMMENT '1-activo, 2-inactivo,3-vencido,0-anulado',
-  `id_plan` int(10) DEFAULT NULL,
   `id_persona` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_contrato`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of contratos
 -- ----------------------------
-INSERT INTO `contratos` VALUES ('1', '1408336200', '1408336200', '1', '1', '1', '1');
-INSERT INTO `contratos` VALUES ('62', '1408825066', '1408825066', '1', '2', '1', '61');
+INSERT INTO `contratos` VALUES ('1', '1408336200', '1', '1');
+INSERT INTO `contratos` VALUES ('62', '1408825066', '1', '61');
+INSERT INTO `contratos` VALUES ('68', '1409099062', '', '73');
 
 -- ----------------------------
 -- Table structure for estado
@@ -422,23 +420,23 @@ CREATE TABLE `personas` (
   `id_ciudad` int(10) unsigned DEFAULT NULL,
   `identificacion` varchar(50) DEFAULT NULL,
   `correo` varchar(100) NOT NULL,
-  `creado` varchar(100) NOT NULL,
-  `modificado` varchar(100) DEFAULT NULL,
   `fecha_creacion` int(12) NOT NULL,
   `fecha_modificacion` int(12) DEFAULT NULL,
   `id_pais` int(10) DEFAULT NULL,
+  `skype` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_persona`),
   UNIQUE KEY `in_identificacion` (`identificacion`) USING BTREE,
   KEY `fk_persona_id_ciudad` (`id_ciudad`) USING BTREE,
   KEY `fk_persona_id_estado` (`id_estado`) USING BTREE,
   KEY `pais_persona` (`id_pais`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of personas
 -- ----------------------------
-INSERT INTO `personas` VALUES ('1', '1', 'Pedro', 'Ramos', null, '', '12345', '2', '16595338', 'angeledugo@gmail.com', '16595338', '16595338', '1408336200', '1408336200', '3');
-INSERT INTO `personas` VALUES ('61', null, 'Angel', 'Gonzalez', '1692041896', 'm', '241-8315703', null, null, 'aegm@gmail.com', '1', '1', '1408825066', null, '17');
+INSERT INTO `personas` VALUES ('1', '1', 'Pedro', 'Ramos', null, '', '12345', '2', '16595338', 'angeledugo@gmail.com', '1408336200', '1408336200', '3', null);
+INSERT INTO `personas` VALUES ('61', null, 'Angel', 'Gonzalez', '1692041896', 'm', '241-8315703', null, null, 'aegm@gmail.com', '1408825066', null, '17', null);
+INSERT INTO `personas` VALUES ('73', null, ' Angel ', 'Gonzalez', '1565757000', 'm', '241-8315703', null, null, 'angeledugo@gmail.com', '1409099062', null, '2', 'angeledugo@hotmail.com');
 
 -- ----------------------------
 -- Table structure for plan
@@ -476,23 +474,25 @@ INSERT INTO `plan` VALUES ('11', 'DIAMANTE', '11', '2048', '9999', '20477952', '
 -- ----------------------------
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
-  `id_persona` int(10) unsigned NOT NULL,
+  `id_usuario` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_grupo` int(10) unsigned NOT NULL,
   `usuario` varchar(30) NOT NULL,
   `clave` varchar(32) NOT NULL,
   `fecha_registro` int(12) NOT NULL,
-  `ultima_entrada` int(10) NOT NULL,
+  `ultima_entrada` int(10) DEFAULT NULL,
   `estatus` varchar(1) NOT NULL DEFAULT '1' COMMENT '1:activo, 2:inactivo, 3:contrato_vencido',
-  PRIMARY KEY (`id_persona`),
+  `id_persona` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `in_usuario` (`usuario`) USING BTREE,
   KEY `fk_usuarios_id_grupo` (`id_grupo`) USING BTREE,
-  KEY `id_persona` (`id_persona`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  KEY `id_persona` (`id_usuario`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of usuarios
 -- ----------------------------
-INSERT INTO `usuarios` VALUES ('1', '1', 'kmfponce@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '1408336200', '1408994424', '1');
+INSERT INTO `usuarios` VALUES ('1', '1', 'kmfponce@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '1408336200', '1409093996', '1', '1');
+INSERT INTO `usuarios` VALUES ('5', '1', 'angeledugo', '81dc9bdb52d04dc20036dbd8313ed055', '1409099062', null, '3', '73');
 
 -- ----------------------------
 -- Table structure for usuarios_accesos

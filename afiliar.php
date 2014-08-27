@@ -3,9 +3,9 @@ ini_set('error_report', E_ALL);
 error_reporting(E_ALL & ~E_NOTICE);
 session_start();
 /* * ************************************ LIBRERIAS LOCALES **************************************** */
-require_once '../config.php';
-require_once '../lib/clases/dbi.class.php';
-require_once '../lib/clases/pais.class.php';
+require_once 'config.php';
+require_once 'lib/clases/dbi.class.php';
+require_once 'lib/clases/pais.class.php';
 
 /* * ************************************* OJEBTOS LOCALES ***************************************** */
 $pais = new pais;
@@ -23,7 +23,7 @@ foreach ($pais->datos as $key) {
     die();*/
     $key['nombre'] = $key['PAI_NOMBRE'];
     $key['value'] = $key['id_pais'];
-    $array['PAIS'] .= $html->html("../html/form_option.html",$key);
+    $array['PAIS'] .= $html->html("html/form_option.html",$key);
 }
 
 

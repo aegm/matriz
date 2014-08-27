@@ -18,24 +18,26 @@ class contrato extends persona {
         parent::__construct();
     }
 
-    public function afiliar($txt_name, $txt_apellido, $email, $slt_sex, $txt_fecha_nac, $telefono, $slt_pais, $afiliador, $slt_plan) {
+    public function afiliar($txt_usr,$txt_pass,$txt_fecha_nac,$txt_skype,$txt_name,$txt_apellido,$email,$slt_sex,$telefono,$slt_pais,$referido) {
         $this->db->autocommit(FALSE);
 
-        if (!parent::verificaNewAfiliado($email)) {//verificamos si existe este correo ya afiliado
-            if (!parent::agregar($txt_name, $txt_apellido, $email, $slt_sex, $txt_fecha_nac, $telefono, $slt_pais, $afiliador)) {
+        if (!parent::verificaNewAfiliado($txt_usr)) {//verificamos si existe este correo ya afiliado
+            if (!parent::agregar($txt_name, $txt_apellido, $email, $slt_sex, $txt_fecha_nac, $telefono, $slt_pais, $txt_skype)) {
                 $this->db->rollback();
                 $this->db->query("UNLOCK TABLES");
                 return $this->estatus;
             }
         }
+        
         //buscamos la persona que se agregado
         $persona = $this->db->query("SELECT LAST_INSERT_ID() as 'id_persona', correo FROM personas");
         $persona = $persona->fetch_assoc();
         $id_persona = $persona['id_persona'];
-
+        
         $fecha_creacion = strtotime("now");
-        $sql = "insert into contratos (fecha_creacion,fecha_modificacion,id_afiliador,id_plan,id_persona) values ('$fecha_creacion','$fecha_creacion','$afiliador','$slt_plan','$id_persona')";
+        $sql = "insert into contratos (fecha_creacion,id_afiliador,id_persona) values ('$fecha_creacion','$referido','$id_persona')";
         $this->db->query($sql);
+
         if (!$this->db->errno) {//si no hay errores
             $this->db->commit();
             //verificamos los datos de la persona afiliada

@@ -27,18 +27,18 @@ class persona {
         //}
     }
 
-    public function verificaNewAfiliado($email) {
+    public function verificaNewAfiliado($txt_usr) {
 
-        if (isset($email))
-            $sql = "select * from personas where correo = '$email'";
+        if (isset($txt_usr))
+            $sql = "select * from usuarios where usuario = '$txt_usr'";
 
         $query = $this->db->query($sql)or die("asd");
         if ($query->num_rows) {
-            $this->mensaje = "ya se se encuenta afiliada esta persona";
+            $this->mensaje = "ya se encuentra registrado este usuario";
             $this->msgTipo = "aviso";
             $this->estatus = true;
         } else {
-            $this->mensaje = "El correo se encuenta registrado";
+            $this->mensaje = "el usuario se encuentra libre";
             $this->msgTipo = "ok";
             $this->estatus = false;
         }
@@ -47,7 +47,7 @@ class persona {
     }
 
     //***********************************************************************************************************
-    public function agregar($txt_name, $txt_apellido, $email, $slt_sex, $txt_fecha_nac, $telefono, $slt_pais,$afiliador) {
+    public function agregar($txt_name, $txt_apellido, $email, $slt_sex, $txt_fecha_nac, $telefono, $slt_pais,$txt_skype) {
         
         
         //validar que todas las variables requeridas esten llenas
@@ -59,20 +59,17 @@ class persona {
                                                         correo,
                                                         fecha_nacimiento,
                                                         telefono,
-                                                        creado,
-                                                        modificado,
                                                         fecha_creacion,
                                                         id_pais,
-                                                        sexo)
+                                                        sexo,
+                                                        skype)
                                                 VALUES
                                                         ('$txt_name',
                                                         '$txt_apellido',
                                                         '$email',
                                                         '$fecha_nac',   
                                                         '$telefono',
-                                                        '$afiliador',
-                                                        '$afiliador',
-                                                        '$fecha_creacion','$slt_pais','$slt_sex')")or die("asd");
+                                                        '$fecha_creacion','$slt_pais','$slt_sex','$txt_skype')")or die("asd");
         if (!$this->db->errno) {
             $this->msgTipo = "ok";
             $this->mensaje = "Se han agregado los datos correctamente...";

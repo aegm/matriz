@@ -13,6 +13,25 @@ $html = new plantilla;
 $matriz['ROOT_URL'] = ROOT_URL;
 $matriz['JS'] = "";
 /* * *************************************** SESSION DE USUARIO ******************************************* */
+
+/* * *************************************** MENSAJES GENERALES ********************************************* */
+
+if (isset($_SESSION['mensaje'])) {
+    if ($_SESSION['msgTipo'] == "aviso")
+        $i['icon'] = "ui-icon-alert";
+    if ($_SESSION['msgTipo'] == "error")
+        $i['icon'] = "ui-icon-circle-close";
+    if ($_SESSION['msgTipo'] == "ok")
+        $i['icon'] = "ui-icon-circle-check";
+    if ($_SESSION['msgTipo'] == "info")
+        $i['icon'] = "ui-icon-info";
+    $matriz['MENSAJE'] = $_SESSION['mensaje'];
+    $matriz['MSGTIPO'] = $_SESSION['msgTipo'];
+    $matriz['MSGTITLE'] = $_SESSION['msgTitle'];
+    unset($_SESSION['mensaje']);
+    unset($_SESSION['msgTipo']);
+    unset($_SESSION['msgTitle']);
+}
 /* * *************************************** ARCHIVOS CSS y JS ************************************************ */
 
 $archivo = basename($_SERVER['PHP_SELF']);
