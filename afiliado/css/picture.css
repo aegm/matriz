@@ -1,0 +1,15 @@
+.upload {
+width: 70%;
+margin-right: auto;
+margin-left: auto;
+margin-top: 1%;
+background: #F5F5F5;
+padding: 50px;
+border-radius: 10px;
+box-shadow: 1px 1px 3px #AAA;
+}
+
+
+.upload #submit-btn {
+margin-top:2%;
+}

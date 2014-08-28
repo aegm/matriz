@@ -98,7 +98,7 @@ $matriz['CONSOLA'] = $html->html('html/consola.html', $consola);*/
 
 /* * ************************************ VARIABLES PREDEFINIDAS ******************************************** */
 
-$matriz['TITULO'] = "Washington School - ";
+$matriz['TITULO'] = "";
 $matriz['MENSAJE'] = "";
 $matriz['MSGTIPO'] = "";
 $matriz['MSGTITLE'] = "";
@@ -147,7 +147,7 @@ $archivo = explode(".", $archivo);
 $archivo = $archivo[0];
 
 if (is_file("js/$archivo" . ".js"))
-    $matriz['JS'] = $html->html("../html/js.html", array("src" => "js/" . $archivo . ".js"));
+    $matriz['JS'] .= $html->html("../html/js.html", array("src" => "js/" . $archivo . ".js"));
 if (is_file("css/$archivo" . ".css"))
     $matriz['CSS'] = $html->html("../html/css.html", array("href" => "css/" . $archivo . ".css", "media" => "all"));
 if (is_file("html/$archivo" . ".html"))

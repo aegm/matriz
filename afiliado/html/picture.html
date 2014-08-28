@@ -1,0 +1,17 @@
+<section class="container">
+    <div class="row">
+    	<div class="fullwidth clearfix">
+    		<div class="margenes"><h1>Subir Imagen</h1></div>
+	    	<div class="col-md-12 upload">
+	    		<span class="">Image Type allowed: Jpeg, Jpg, Png and Gif. | Maximum Size 1 MB</span>
+	    		<form action="processupload.php" method="post" enctype="multipart/form-data" id="MyUploadForm">
+		    		<input name="image_file" id="imageInput" type="file" />
+		    		<input type="submit" class="btn btn-info"  id="submit-btn" value="Upload" />
+		    		<img src="../images/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
+	    		</form>
+	    		<div id="output"></div>
+	    	</div>
+    	</div>	
+    </div>
+</section>
+<br><br>	
