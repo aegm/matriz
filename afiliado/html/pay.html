@@ -39,13 +39,40 @@
                         <p class="">
                             <button class="btn btn-success" type="submit">Guardar</button>
                         </p>
-                        
+
                     </form>
 
                 </div>
                 <div class="tab-pane fade" id="profile">
-                    
-
+                    <h3 class="head text-center">Transacciones Bancaria<span style="color:#f48260;"> <i class="fa fa-cc-paypal"></i></span></h3>
+                    <p class="narrow text-center">
+                        Recuerde que puede realizar Transferencias Bancarias o depositos para realizar su pago.
+                    </p>
+                    <form role="form" class="row online_form_builder_big" action="{ROOT_URL}afiliado/form_process.php" method="POST">
+                        <div class="col-md-6">
+                            <label for="skype">Cuenta Bancaria (Requerido)</label>
+                            <input type="text" class="form-control" id="txt_cuenta" name="txt_cuenta" required="required" placeholder="">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="skype">Nombre del Banco (Requerido)</label>
+                            <input type="text" class="form-control" id="txt_cuenta" name="txt_cuenta" required="required" placeholder="">
+                        </div>    
+                        <div class="clearfix"></div>
+                        <br>
+                        <div class="col-md-6">
+                            <label for="skype">Pais de Origen (Requerido)</label>
+                            <select class="form-control">
+                                <option></option>
+                            </select>
+                        </div>    
+                        <br>
+                        <div class="campos_oculto">
+                            <input type="hidden" name="form" value="pay">
+                        </div>
+                        <p class="">
+                            <button class="btn btn-success" type="submit">Guardar</button>
+                        </p>
+                    </form>    
                 </div>
                 <div class="clearfix"></div>
             </div>
