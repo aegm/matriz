@@ -3,10 +3,108 @@
 	{
 		"selected_items":
 		[
+			[
+				"_se",
+				"_SESSION"
+			],
+			[
+				"image_na",
+				"image_name_only"
+			],
+			[
+				"new_",
+				"new_file_name"
+			],
+			[
+				"print",
+				"print_r"
+			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "afiliado/profile.php",
+			"settings":
+			{
+				"buffer_size": 816,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "afiliado/html/profile.html",
+			"settings":
+			{
+				"buffer_size": 1986,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "html/js.html",
+			"settings":
+			{
+				"buffer_size": 62,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "afiliado/head.php",
+			"settings":
+			{
+				"buffer_size": 5833,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "afiliado/picture.php",
+			"settings":
+			{
+				"buffer_size": 1031,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "afiliado/js/picture.js",
+			"settings":
+			{
+				"buffer_size": 2107,
+				"line_ending": "Windows",
+				"name": "picture"
+			}
+		},
+		{
+			"file": "afiliado/processupload.php",
+			"settings":
+			{
+				"buffer_size": 6683,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "afiliado/html/picture.html",
+			"settings":
+			{
+				"buffer_size": 733,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "afiliado/css/picture.css",
+			"settings":
+			{
+				"buffer_size": 206,
+				"line_ending": "Windows",
+				"name": "picture"
+			}
+		},
+		{
+			"file": "afiliado/html/matriz.html",
+			"settings":
+			{
+				"buffer_size": 13432,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -32,10 +130,11 @@
 	},
 	"file_history":
 	[
+		"/E/Zend/Apache2/htdocs/matriz/head.php"
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -49,6 +148,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"arrow.png"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -66,8 +166,287 @@
 	"groups":
 	[
 		{
+			"selected": 3,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "afiliado/profile.php",
+					"settings":
+					{
+						"buffer_size": 816,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								720,
+								727
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "afiliado/html/profile.html",
+					"settings":
+					{
+						"buffer_size": 1986,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								477,
+								477
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 90.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "html/js.html",
+					"settings":
+					{
+						"buffer_size": 62,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								62,
+								62
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "afiliado/head.php",
+					"settings":
+					{
+						"buffer_size": 5833,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								163,
+								163
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "afiliado/picture.php",
+					"settings":
+					{
+						"buffer_size": 1031,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								709,
+								709
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 153.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "afiliado/js/picture.js",
+					"settings":
+					{
+						"buffer_size": 2107,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2107,
+								2107
+							]
+						],
+						"settings":
+						{
+							"auto_name": "picture",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 588.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "afiliado/processupload.php",
+					"settings":
+					{
+						"buffer_size": 6683,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2605,
+								2605
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 630.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "afiliado/html/picture.html",
+					"settings":
+					{
+						"buffer_size": 733,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								547,
+								547
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "afiliado/css/picture.css",
+					"settings":
+					{
+						"buffer_size": 206,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								166,
+								166
+							]
+						],
+						"settings":
+						{
+							"auto_name": "picture",
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "afiliado/html/matriz.html",
+					"settings":
+					{
+						"buffer_size": 13432,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8670,
+								8674
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2012.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -77,7 +456,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -88,6 +467,12 @@
 				0,
 				1,
 				1
+			],
+			[
+				0,
+				1,
+				1,
+				2
 			]
 		],
 		"cols":
@@ -98,6 +483,7 @@
 		"rows":
 		[
 			0.0,
+			0.5,
 			1.0
 		]
 	},
@@ -112,6 +498,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"head",
+				"head.php"
+			]
 		],
 		"width": 0.0
 	},
@@ -127,6 +517,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 216.0,
 	"status_bar_visible": true
 }

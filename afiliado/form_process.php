@@ -51,6 +51,9 @@ if (isset($_REQUEST) && count($_REQUEST)) {
             $ty_redirect_to = 'afiliados.php';
             header("Location: " . $lang_dir . $ty_redirect_to);
             break;
+        case 'pay':
+            //if(cou)
+            break;
         default :
             exit();
             break;
