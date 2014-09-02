@@ -42,7 +42,7 @@ class usuario {
     }
 
     //***********************************************************************************************************
-    public function registrar($id_grupo, $txt_usr, $clave, $fecha_creacion, $estatus,$id_persona) {
+    public function registrar($id_grupo, $txt_usr, $clave, $fecha_creacion, $estatus, $id_persona) {
 
         $this->db = new db;
 
@@ -70,14 +70,14 @@ class usuario {
             $this->estatus = true;
             $this->json = json_encode($this);
             return $this->estatus;
-        }else{
-        $this->msgTipo = "ok";
-        $this->mensaje = "No se puedo registrar el usuario en este momento, por favor intenta mas tarde... Disculpe las molestias causadas.";
-        $this->estatus = false;
-        $this->json = json_encode($this);
-        $this->db->rollback();
-        $this->db->query("UNLOCK TABLES");
-        return $this->estatus;
+        } else {
+            $this->msgTipo = "ok";
+            $this->mensaje = "No se puedo registrar el usuario en este momento, por favor intenta mas tarde... Disculpe las molestias causadas.";
+            $this->estatus = false;
+            $this->json = json_encode($this);
+            $this->db->rollback();
+            $this->db->query("UNLOCK TABLES");
+            return $this->estatus;
         }
         if ($this->db->errno == 1062) {
             $this->msgTipo = "error";
@@ -522,6 +522,24 @@ class usuario {
             $this->cerrar_session();
         } else
             $_SESSION[SISTEMA]['standby'] = strtotime("now");
+    }
+
+    public function listarNiveles() {
+        
+        $this->db = new db;
+        $sql = "select * from plan order by id";
+        $niveles = $this->db->query($sql)or die("llego");
+        while ($item = $niveles->fetch_assoc()) {
+            $this->datos[] = $item;
+        }
+        
+        if ($this->db->num_error == 0) {
+            $this->mensaje = "Se ha listado los nivel...";
+            return $this->estatus;
+        } else {
+            $this->mensaje = "No se pudo listar los niveles...";
+            return $this->estatus;
+        }
     }
 
     //***********************************************************************************************************
