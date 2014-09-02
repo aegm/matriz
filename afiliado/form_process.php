@@ -12,6 +12,7 @@ require_once '../lib/clases/contrato.class.php';
 require_once '../lib/clases/persona.class.php';
 require_once '../lib/clases/usuario.class.php';
 require_once '../lib/PHPMailer/class.phpmailer.php';
+require_once '../lib/clases/plantilla.class.php';
 //require_once '../lib/clases/matriz.class.php';
 if (isset($_REQUEST) && count($_REQUEST)) {
     $form_error = false;
@@ -62,10 +63,46 @@ if (isset($_REQUEST) && count($_REQUEST)) {
                 $_SESSION['msgTitle'] = "error";
                 $form_error = true;
             }
-
+            //die("asd");
             if (!$form_error) {
-                $message="<h2>Información de Contacto Washington School</h2>";
+                $message = "<h2>Información GCD Network</h2>";
+
+                // Cuerpo del mensaje
+                $message = "---------------------------------- \n\n";
+                $message.= "            Contacto               \n\n";
+                $message.= "---------------------------------- \n\n";
+                $message.= "NOMBRE: Nombre de Prueb \n\n";
+                $message.= "EMPRESA: GDC Network ";
+                $message.= "---------------------------------- \n\n";
+                $message.= "Gdc Network le da la bienvenida a pertenecer a nuestro equipo de \n\n";
+                $message.= "Trabajo unase haciendo click en el siguiente Link \n\n";
+                $message.= "---------------------------------- \n\n";
+                $message.= "Enviado desde http://gdcnetwork.com\n\n";
+
+
+                $html = new plantilla;
+                $html->leer("html/mail.html");
+                $html->vars(array("BODY" => $message));
+                $message = $html->mostrar();
+                $para = $email;
+                //$para='gilberto.amb@gmail.com';
+                $asunto = "Información GCD Network";
+
+                $cabeceras = 'MIME-Version: 1.0' . "\r\n";
+                $cabeceras .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+                $cabeceras .= 'From: gdctwork@gmail.com \r\n';
+                if (!mail($para, $asunto, $message, $cabeceras)) {
+                    $form_error = true;
+                    $_SESSION['mensaje'] = "An unexpected error ocurred when trying to process your request. Please try again later.";
+                    $_SESSION['msgTipo'] = "error";
+                    $_SESSION['msgTitle'] = "error";
+                } else {
+                    $_SESSION['mensaje'] = "Tu mensaje ha sido enviado correctamente...";
+                    $_SESSION['msgTipo'] = "ok";
+                    $_SESSION['msgTitle'] = "ok";
+                }
             }
+
             $error_redirect_to = 'referir.php';
             $ty_redirect_to = 'referir.php';
             break;
@@ -78,5 +115,21 @@ if (isset($_REQUEST) && count($_REQUEST)) {
         $_SESSION[$_POST['form']] = $_POST;
         header("Location: " . $lang_dir . $error_redirect_to);
         exit();
+    }
+    try {
+        //$user = UserFactory::getUserType($_POST);
+        //$user->email();
+        //$admin = AdminFactory::getAdminType($_POST);
+        //$admin->notify();
+        //$subscriber = SubscriberFactory::getSubscriberType($_POST);
+        //$subscriber->subscribe();
+
+        unset($_SESSION[$_POST['form']]);
+        header("Location: " . $lang_dir . $ty_redirect_to);
+    } catch (Exception $e) {
+        $_SESSION['active_form'] = $_POST['form'];
+        $_SESSION[$_POST['form']] = $_POST;
+        $_SESSION['mensaje'] = 'Error inesperado al intentar procesar su solicitud. Por favor, inténtelo de nuevo más tarde.';
+        header("Location: " . $lang_dir . $error_redirect_to);
     }
 }

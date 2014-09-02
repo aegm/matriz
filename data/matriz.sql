@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : matriz
-Source Server Version : 50168
-Source Host           : mysql500.ixwebhosting.com:3306
-Source Database       : C243473_matriz
+Source Server         : localhost
+Source Server Version : 50523
+Source Host           : localhost:3306
+Source Database       : matriz
 
 Target Server Type    : MYSQL
-Target Server Version : 50168
+Target Server Version : 50523
 File Encoding         : 65001
 
-Date: 2014-09-01 14:21:32
+Date: 2014-09-01 20:48:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -57,17 +57,14 @@ CREATE TABLE `contratos` (
   `id_afiliador` varchar(50) NOT NULL,
   `id_persona` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_contrato`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of contratos
 -- ----------------------------
 INSERT INTO `contratos` VALUES ('1', '1408336200', '1', '1');
 INSERT INTO `contratos` VALUES ('62', '1408825066', '1', '61');
-INSERT INTO `contratos` VALUES ('71', '1409100583', '', '76');
-INSERT INTO `contratos` VALUES ('72', '1409150871', '', '77');
-INSERT INTO `contratos` VALUES ('73', '1409151282', '', '78');
-INSERT INTO `contratos` VALUES ('74', '1409363795', '', '0');
+INSERT INTO `contratos` VALUES ('68', '1409099062', '', '73');
 
 -- ----------------------------
 -- Table structure for estado
@@ -433,16 +430,14 @@ CREATE TABLE `personas` (
   KEY `fk_persona_id_ciudad` (`id_ciudad`) USING BTREE,
   KEY `fk_persona_id_estado` (`id_estado`) USING BTREE,
   KEY `pais_persona` (`id_pais`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of personas
 -- ----------------------------
 INSERT INTO `personas` VALUES ('1', '1', 'Pedro', 'Ramos', null, '', '12345', '2', '16595338', 'angeledugo@gmail.com', '1408336200', '1408336200', '3', null);
 INSERT INTO `personas` VALUES ('61', null, 'Angel', 'Gonzalez', '1692041896', 'm', '241-8315703', null, null, 'aegm@gmail.com', '1408825066', null, '17', null);
-INSERT INTO `personas` VALUES ('76', null, 'Jonathan', 'Trejo', '1904788800', 'm', '04263419488', null, null, 'jtcpu2@gmail.com', '1409100583', null, '232', 'jonathan');
-INSERT INTO `personas` VALUES ('77', null, 'Klever', 'Freire', '0', 'm', '0959672438', null, null, 'kmfponce@gmail.com', '1409150871', null, '66', 'ninguno');
-INSERT INTO `personas` VALUES ('78', null, 'Klever', 'Freire Ponce', '0', 'm', '0959672438', null, null, 'klemafre2@hotmail.com', '1409151282', null, '66', 'ninguno');
+INSERT INTO `personas` VALUES ('73', null, ' Angel ', 'Gonzalez', '1565757000', 'm', '241-8315703', null, null, 'angeledugo@gmail.com', '1409099062', null, '2', 'angeledugo@hotmail.com');
 
 -- ----------------------------
 -- Table structure for plan
@@ -492,15 +487,13 @@ CREATE TABLE `usuarios` (
   UNIQUE KEY `in_usuario` (`usuario`) USING BTREE,
   KEY `fk_usuarios_id_grupo` (`id_grupo`) USING BTREE,
   KEY `id_persona` (`id_usuario`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of usuarios
 -- ----------------------------
-INSERT INTO `usuarios` VALUES ('1', '1', 'kmfponce', '81dc9bdb52d04dc20036dbd8313ed055', '1408336200', '1409597441', '1', '1');
-INSERT INTO `usuarios` VALUES ('7', '1', 'jona2518', '81dc9bdb52d04dc20036dbd8313ed055', '1409100583', null, '3', '76');
-INSERT INTO `usuarios` VALUES ('8', '1', 'KleverF', '81dc9bdb52d04dc20036dbd8313ed055', '1409150871', '1409153093', '1', '77');
-INSERT INTO `usuarios` VALUES ('9', '1', 'KleverFreire', '231d175a6f588a685bc28d34133fa5ca', '1409151282', null, '1', '78');
+INSERT INTO `usuarios` VALUES ('1', '1', 'kmfponce', '81dc9bdb52d04dc20036dbd8313ed055', '1408336200', '1409615408', '1', '1');
+INSERT INTO `usuarios` VALUES ('5', '1', 'angeledugo', '81dc9bdb52d04dc20036dbd8313ed055', '1409099062', null, '3', '73');
 
 -- ----------------------------
 -- Table structure for usuarios_accesos
@@ -517,6 +510,7 @@ CREATE TABLE `usuarios_accesos` (
 -- ----------------------------
 -- Records of usuarios_accesos
 -- ----------------------------
+INSERT INTO `usuarios_accesos` VALUES ('1', 'afiliar', '2211');
 INSERT INTO `usuarios_accesos` VALUES ('4', 'profile', '2222');
 INSERT INTO `usuarios_accesos` VALUES ('5', 'network', '2222');
 INSERT INTO `usuarios_accesos` VALUES ('6', 'support', '2222');
@@ -528,14 +522,18 @@ DROP TABLE IF EXISTS `usuarios_config`;
 CREATE TABLE `usuarios_config` (
   `id_persona` int(10) unsigned NOT NULL,
   `nivel_actual` int(10) NOT NULL,
-  `datos_actualizados` varchar(1) NOT NULL DEFAULT '0',
+  `img_actualizada` int(10) NOT NULL DEFAULT '0',
+  `cuenta_paypal` varchar(255) DEFAULT NULL,
+  `paypal_activo` int(10) DEFAULT NULL,
+  `cuenta_banco` varchar(255) DEFAULT NULL,
+  `banco_activo` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_persona`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of usuarios_config
 -- ----------------------------
-INSERT INTO `usuarios_config` VALUES ('1', '1', '1');
+INSERT INTO `usuarios_config` VALUES ('1', '1', '1', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for usuarios_grupos
@@ -575,18 +573,144 @@ INSERT INTO `usuarios_grupos_permisos` VALUES ('1', '5', '2222');
 INSERT INTO `usuarios_grupos_permisos` VALUES ('1', '6', '2222');
 
 -- ----------------------------
--- View structure for v_usuarios
--- ----------------------------
-DROP VIEW IF EXISTS `v_usuarios`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`C243473_matriz`@`%` SQL SECURITY DEFINER VIEW `v_usuarios` AS select `personas`.`id_persona` AS `id_persona`,`usuarios_grupos`.`id_grupo` AS `id_grupo`,`personas`.`identificacion` AS `identificacion`,`personas`.`nombre` AS `nombre`,`personas`.`apellido` AS `apellido`,`usuarios_grupos`.`nombre` AS `grupo`,`usuarios`.`usuario` AS `usuario`,`usuarios`.`clave` AS `clave`,`usuarios`.`ultima_entrada` AS `ultima_entrada`,`usuarios_config`.`nivel_actual` AS `nivel_actual`,`usuarios_config`.`datos_actualizados` AS `datos_actualizados`,`usuarios`.`estatus` AS `estatus`,`personas`.`correo` AS `correo` from (((`usuarios` join `usuarios_grupos` on((`usuarios`.`id_grupo` = `usuarios_grupos`.`id_grupo`))) join `personas` on((`usuarios`.`id_persona` = `personas`.`id_persona`))) left join `usuarios_config` on((`personas`.`id_persona` = `usuarios_config`.`id_persona`))) ;
-
--- ----------------------------
 -- View structure for vmenu
 -- ----------------------------
 DROP VIEW IF EXISTS `vmenu`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`C243473_matriz`@`%` SQL SECURITY DEFINER VIEW `vmenu` AS select `menu`.`id_menu` AS `id_menu`,`usuarios_grupos`.`id_grupo` AS `id_grupo`,`usuarios_accesos`.`id_acceso` AS `id_acceso`,`usuarios_grupos`.`nombre` AS `grupo`,`usuarios_grupos_permisos`.`seguridad` AS `grupo_seguridad`,`usuarios_accesos`.`nombre` AS `acceso`,`usuarios_accesos`.`seguridad` AS `acceso_seguridad`,`menu`.`id` AS `id`,`menu`.`clase` AS `clase`,`menu`.`nombre` AS `nombre`,`menu`.`url` AS `url`,`menu`.`orden` AS `orden`,`menu`.`tipo` AS `tipo`,`menu`.`session` AS `session`,`menu`.`target` AS `target` from (((`menu` join `usuarios_grupos_permisos` on((`menu`.`id_acceso` = `usuarios_grupos_permisos`.`id_acceso`))) join `usuarios_grupos` on((`usuarios_grupos_permisos`.`id_grupo` = `usuarios_grupos`.`id_grupo`))) join `usuarios_accesos` on((`usuarios_grupos_permisos`.`id_acceso` = `usuarios_accesos`.`id_acceso`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `vmenu` AS SELECT
+	`menu`.`id_menu` AS `id_menu`,
+	`usuarios_grupos`.`id_grupo` AS `id_grupo`,
+	`usuarios_accesos`.`id_acceso` AS `id_acceso`,
+	`usuarios_grupos`.`nombre` AS `grupo`,
+	`usuarios_grupos_permisos`.`seguridad` AS `grupo_seguridad`,
+	`usuarios_accesos`.`nombre` AS `acceso`,
+	`usuarios_accesos`.`seguridad` AS `acceso_seguridad`,
+	`menu`.`id` AS `id`,
+	`menu`.`clase` AS `clase`,
+	`menu`.`nombre` AS `nombre`,
+	`menu`.`url` AS `url`,
+	`menu`.`orden` AS `orden`,
+	`menu`.`tipo` AS `tipo`,
+	`menu`.`session` AS `session`,
+	`menu`.`target` AS `target`
+FROM
+	(
+		(
+			(
+				`menu`
+				JOIN `usuarios_grupos_permisos` ON (
+					(
+						`menu`.`id_acceso` = `usuarios_grupos_permisos`.`id_acceso`
+					)
+				)
+			)
+			JOIN `usuarios_grupos` ON (
+				(
+					`usuarios_grupos_permisos`.`id_grupo` = `usuarios_grupos`.`id_grupo`
+				)
+			)
+		)
+		JOIN `usuarios_accesos` ON (
+			(
+				`usuarios_grupos_permisos`.`id_acceso` = `usuarios_accesos`.`id_acceso`
+			)
+		)
+	) ; ;
 
 -- ----------------------------
 -- View structure for vpersonas
 -- ----------------------------
 DROP VIEW IF EXISTS `vpersonas`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `vpersonas` AS (
+	SELECT
+		p.id_persona,
+		p.nombre,
+		p.apellido,
+		FROM_UNIXTIME(c.fecha_creacion) AS fecha_crea,
+		p.correo,
+		c.estatus,
+	c.id_afiliador
+	FROM
+		personas p,
+		contratos c
+	WHERE
+		p.id_persona = c.id_persona and TIMESTAMPDIFF(
+			HOUR,
+			FROM_UNIXTIME(c.fecha_creacion),
+			NOW()
+		) < 48 ) ;
+
+-- ----------------------------
+-- View structure for vpersonas_activas
+-- ----------------------------
+DROP VIEW IF EXISTS `vpersonas_activas`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `vpersonas_activas` AS (
+	SELECT
+		p.id_persona,
+		p.nombre,
+		p.apellido,
+		FROM_UNIXTIME(c.fecha_creacion) AS fecha_crea,
+		p.correo,
+		c.estatus,
+	c.id_afiliador
+	FROM
+		personas p,
+		contratos c
+	WHERE
+			c.id_persona = p.id_persona and 
+		 c.estatus = '1') ;
+
+-- ----------------------------
+-- View structure for v_personas
+-- ----------------------------
+DROP VIEW IF EXISTS `v_personas`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `v_personas` AS SELECT
+	*
+FROM
+	vpersonas
+UNION
+	SELECT
+		*
+	FROM
+		vpersonas_activas ;
+
+-- ----------------------------
+-- View structure for v_usuarios
+-- ----------------------------
+DROP VIEW IF EXISTS `v_usuarios`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `v_usuarios` AS SELECT
+	`personas`.`id_persona` AS `id_persona`,
+	`usuarios_grupos`.`id_grupo` AS `id_grupo`,
+	`personas`.`identificacion` AS `identificacion`,
+	`personas`.`nombre` AS `nombre`,
+	`personas`.`apellido` AS `apellido`,
+	`usuarios_grupos`.`nombre` AS `grupo`,
+	`usuarios`.`usuario` AS `usuario`,
+	`usuarios`.`clave` AS `clave`,
+	`usuarios`.`ultima_entrada` AS `ultima_entrada`,
+	`usuarios_config`.`nivel_actual` AS `nivel_actual`,
+	`usuarios_config`.`img_actualizada` AS `image_actualizada`,
+	`usuarios`.`estatus` AS `estatus`,
+	`personas`.`correo` AS `correo`
+FROM
+	(
+		(
+			(
+				`usuarios`
+				JOIN `usuarios_grupos` ON (
+					(
+						`usuarios`.`id_grupo` = `usuarios_grupos`.`id_grupo`
+					)
+				)
+			)
+			JOIN `personas` ON (
+				(
+					`usuarios`.`id_persona` = `personas`.`id_persona`
+				)
+			)
+		)
+		LEFT JOIN `usuarios_config` ON (
+			(
+				`personas`.`id_persona` = `usuarios_config`.`id_persona`
+			)
+		)
+	) ;
