@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50523
 File Encoding         : 65001
 
-Date: 2014-09-01 20:48:40
+Date: 2014-09-02 19:00:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -140,7 +140,7 @@ CREATE TABLE `menu` (
   UNIQUE KEY `orden` (`orden`,`tipo`) USING BTREE,
   KEY `fk_menu_acceso` (`id_acceso`) USING BTREE,
   CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`id_acceso`) REFERENCES `usuarios_accesos` (`id_acceso`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of menu
@@ -148,6 +148,9 @@ CREATE TABLE `menu` (
 INSERT INTO `menu` VALUES ('4', '4', 'menu_profile', '', 'Mi Perfil', 'afiliado/profile.php', '', '1', '0', '1');
 INSERT INTO `menu` VALUES ('5', '5', 'menu_network', '', 'Red', 'afiliado/network.php', '', '4', '0', '1');
 INSERT INTO `menu` VALUES ('6', '6', 'menu_support', '', 'Apoyo', 'afiliado/support.php', '', '5', '0', '1');
+INSERT INTO `menu` VALUES ('7', '7', 'menu_users', '', 'Usuarios', 'admin/users.php', ' ', '6', '0', '1');
+INSERT INTO `menu` VALUES ('8', '9', 'menu_systems', '', 'Sistema', 'admin/systems.php', '', '7', '0', '1');
+INSERT INTO `menu` VALUES ('9', '10', 'menu_transacciones', '', 'Transacciones', 'admin/transaccion.php', '', '8', '0', '1');
 
 -- ----------------------------
 -- Table structure for pais
@@ -492,7 +495,7 @@ CREATE TABLE `usuarios` (
 -- ----------------------------
 -- Records of usuarios
 -- ----------------------------
-INSERT INTO `usuarios` VALUES ('1', '1', 'kmfponce', '81dc9bdb52d04dc20036dbd8313ed055', '1408336200', '1409615408', '1', '1');
+INSERT INTO `usuarios` VALUES ('1', '2', 'kmfponce', '81dc9bdb52d04dc20036dbd8313ed055', '1408336200', '1409700128', '1', '1');
 INSERT INTO `usuarios` VALUES ('5', '1', 'angeledugo', '81dc9bdb52d04dc20036dbd8313ed055', '1409099062', null, '3', '73');
 
 -- ----------------------------
@@ -505,7 +508,7 @@ CREATE TABLE `usuarios_accesos` (
   `seguridad` int(4) NOT NULL,
   PRIMARY KEY (`id_acceso`),
   UNIQUE KEY `in_nombre` (`nombre`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of usuarios_accesos
@@ -514,6 +517,9 @@ INSERT INTO `usuarios_accesos` VALUES ('1', 'afiliar', '2211');
 INSERT INTO `usuarios_accesos` VALUES ('4', 'profile', '2222');
 INSERT INTO `usuarios_accesos` VALUES ('5', 'network', '2222');
 INSERT INTO `usuarios_accesos` VALUES ('6', 'support', '2222');
+INSERT INTO `usuarios_accesos` VALUES ('7', 'user', '2222');
+INSERT INTO `usuarios_accesos` VALUES ('9', 'systems', '2222');
+INSERT INTO `usuarios_accesos` VALUES ('10', 'transacciones', '2222');
 
 -- ----------------------------
 -- Table structure for usuarios_config
@@ -544,11 +550,12 @@ CREATE TABLE `usuarios_grupos` (
   `nombre` varchar(50) NOT NULL,
   PRIMARY KEY (`id_grupo`),
   UNIQUE KEY `in_nombre` (`nombre`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of usuarios_grupos
 -- ----------------------------
+INSERT INTO `usuarios_grupos` VALUES ('2', 'admin');
 INSERT INTO `usuarios_grupos` VALUES ('1', 'Afiliado');
 
 -- ----------------------------
@@ -571,6 +578,9 @@ CREATE TABLE `usuarios_grupos_permisos` (
 INSERT INTO `usuarios_grupos_permisos` VALUES ('1', '4', '2222');
 INSERT INTO `usuarios_grupos_permisos` VALUES ('1', '5', '2222');
 INSERT INTO `usuarios_grupos_permisos` VALUES ('1', '6', '2222');
+INSERT INTO `usuarios_grupos_permisos` VALUES ('2', '7', '2222');
+INSERT INTO `usuarios_grupos_permisos` VALUES ('2', '9', '2222');
+INSERT INTO `usuarios_grupos_permisos` VALUES ('2', '10', '2222');
 
 -- ----------------------------
 -- View structure for vmenu

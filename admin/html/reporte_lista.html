@@ -1,1 +1,13 @@
-<tr class="hover {clase} registro" style="cursor:pointer;" id="{tabla}_{id}"><th>{i}</th>{campos}<td><a class="btn btn-primary" href="form_process.php?form=confirma&id={id}">Confirmar</a></td></tr>
+<tr class="hover {clase} registro" style="cursor:pointer;" id="{tabla}_{id}">
+    <th>{i}</th>{campos}
+    <td>
+        <button title="" data-original-title="" class="btn btn-primary btn-xs" data-title="Editar" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+    </td>
+    <td>
+        <button title="" data-original-title="" class="btn btn-primary btn-xs" data-title="Agregar" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </td>
+</tr>

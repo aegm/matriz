@@ -18,6 +18,8 @@ $user = new usuario;
 include_once('head.php');
 /* * ************************************** VARIABLES DE MATRIZ ************************************* */
 $user->listarNiveles();
+$inicial = $i = ($p - 1) * $l;
+$inicial++;
 foreach ($user->datos as $registro) {
     //echo $registro['id'];
     $campos = "";
@@ -28,12 +30,11 @@ foreach ($user->datos as $registro) {
             $formato = substr(strstr($campo, '..'), 2);
             $valor = formato($formato, $valor);
 
-            
-                $array['cabezas'] .= $html->html("html/reporte_cabeza_lista.html", array("cabeza" => str_replace(".." . extension($campo), "", $campo)));
+            if($i == $inicial)
+            $array['cabezas'] .= $html->html("html/reporte_cabeza_lista.html", array("cabeza" => str_replace(".." . extension($campo), "", $campo)));
 
 
-                $campos .= $html->html("html/reporte_campo_lista.html", array("campo" => $valor, "atributos" => $atributos));
-            
+            $campos .= $html->html("html/reporte_campo_lista.html", array("campo" => $valor, "atributos" => $atributos));
         }
     }
     if ($i % 2 == 0)
@@ -42,7 +43,7 @@ foreach ($user->datos as $registro) {
         $clase = "";
     $array['registros'] .= $html->html("html/reporte_lista.html", array("tabla" => $tabla, "id" => $registro['id'], "i" => $i, "campos" => $campos, "clase" => $clase));
 }
-$matriz['CONTENIDO'] = $html->html("html/niveles.html",$array);
+$matriz['CONTENIDO'] = $html->html("html/niveles.html", $array);
 
 //print_r($menu->datos);
 echo $html->html("html/matriz.html", $matriz);
